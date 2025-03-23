@@ -1,0 +1,28 @@
+name: CI template-loader
+on:
+  push:
+    branches:
+      - 'main'
+env:
+  bvid: BV1BpXjY2EP2
+jobs:
+  get-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: get and download video
+        id: bili
+        uses: ktKongTong/bili-action@v0.2.11
+        with:
+          bvid: ${{ env.bvid }}
+      - uses: ./.github/actions/template-loader
+        id: template-loader
+        with:
+          variable: ${{ steps.bili.outputs.video }}
+      - name: show template result
+        run: |
+          echo "path: ${{steps.template-loader.outputs.filepath-template}}"
+          echo "markdown: ${{steps.template-loader.outputs.markdown-template}}"
+          echo "commit-message: ${{steps.template-loader.outputs.commit-message-template}}"
+          echo "prompt: ${{steps.template-loader.outputs.prompt-template}}"
+          echo "system-prompt: ${{steps.template-loader.outputs.system-prompt-template }}"

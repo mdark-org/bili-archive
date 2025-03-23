@@ -1,0 +1,14 @@
+{
+  "name": "auto-doc-template",
+  "version": "1.0.0",
+  "scripts": {
+
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.6.5",
+  "pnpm": {
+    "patchedDependencies": {
+      "fumadocs-ui": "patches/fumadocs-ui.patch"
+    }
+  }
+}

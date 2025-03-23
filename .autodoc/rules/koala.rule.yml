@@ -1,0 +1,34 @@
+listen:
+  - id: Koala聊开源
+    platform:
+      bilibili:
+        post:
+          mid: 489667127
+          keywords: 科技周报
+          filepath: docs/Koala聊开源/{{title}}.md
+
+match:
+  - id: Koala聊开源-科技周报
+    platform:
+      bilibili:
+        script: .autodoc/scripts/bilibili/{{owner.name}}.mjs
+        condition:
+          owner.mid: 489667127
+          title: "科技周报"
+        template:
+          filepath: docs/Koala聊开源/{{title}}.md
+          prompt:
+            system: |
+              这是一段标题为【{{title}}】的视频音频，请识别对应的语言，并转换为对应文本。
+              请为文本进行合适的分段，并添加标点符号，段落前后用两个换行符进行分隔。
+            user: |
+              这是一档科技类周报节目，主要介绍 HackerNews 上发现的新产品/工具，里面包含一些固定搭配/习惯性用语，请参考。
+              - 一些固定搭配：【Koala】，【欢迎收看xxx期科技周报】，【了解行业资讯，把握行业脉搏，大家好，我是Koala】
+              - 通常为一人播报音频音频。
+              - 每期包含若干个不同的产品或工具。
+              - 这份音频的标题是【{{ title }}】，介绍是【{{desc}}】。
+              下面是一些需要遵循的要求：
+              - 每一期包含多个产品/工具，以每个产品/工具为一节，并根据加上对应的标题，采用三级标题。
+              - 每一节可以使用 `---` 进行分隔。
+              另外这是本期内容的相关信息，包含链接。根据这个为每一节加上对应的链接。
+              {{ topComment.upper.content.message }}

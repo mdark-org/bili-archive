@@ -1,0 +1,3 @@
+{
+  "ignoreCommand": "git rev-parse --abbrev-ref HEAD | grep -q '^batch'"
+}
