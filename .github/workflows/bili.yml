@@ -22,6 +22,10 @@ on:
         description: "markdown-template"
         required: false
         type: string
+      commit-message-template:        
+        description: "commit-message-template"
+        required: false
+        type: string
       exec-even-exist:
         type: 'boolean'
         required: false
@@ -53,6 +57,10 @@ on:
         type: string
       markdown-template:
         description: "markdown-template"
+        required: false
+        type: string
+      commit-message-template:
+        description: "commit-message-template"
         required: false
         type: string
       exec-even-exist:
@@ -114,4 +122,4 @@ jobs:
           markdown-template: ${{ env.markdown-template }}
           prompt-template: ${{ env.prompt-template }}
           system-prompt-template: ${{ env.system-prompt-template }}
-          commit-message-template: ${{env.commit-message-tmplate || format(':memo: new docs {0}', fromJSON(steps.bili.outputs.video).title) }}
+          commit-message-template: ${{ env.commit-message-tmplate || format('new docs {0}', fromJSON(steps.bili.outputs.video).title) }}
