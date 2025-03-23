@@ -114,4 +114,4 @@ jobs:
           markdown-template: ${{ env.markdown-template }}
           prompt-template: ${{ env.prompt-template }}
           system-prompt-template: ${{ env.system-prompt-template }}
-          commit-message-template: ":memo: new docs ${{ steps.bili.outputs.title }}"
+          commit-message-template: ${{env.commit-message-tmplate || format(':memo: new docs {0}', fromJSON(steps.bili.outputs.video).title) }}
