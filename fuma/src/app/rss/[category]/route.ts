@@ -7,7 +7,7 @@ export async function GET(request: Request, {
 }) {
   const category = decodeURIComponent((await params).category);
   const feed = generateRssFeed(category);
-  const root = tree
+  const root = tree.children.find((item) => item.type === 'folder' && item.name == category);
   if(!root) {
     return new Response('404 not found', {
       headers: { 'content-type': 'text/plain' },
