@@ -41,6 +41,36 @@ index 00b23104f4cc5874fde3103dc57ac5a3cce102b1..f8effb02d519cd744bf48648bbed786e
              // If locale prefix hidden
              if (segments[0] !== locale) {
                  segments.unshift(value);
+diff --git a/dist/layouts/docs/shared.js b/dist/layouts/docs/shared.js
+index 30ffe74885092038406398859e7e7577adf645b8..ad108ac29d8f4fef38b3f1b534a3b279c815dcad 100644
+--- a/dist/layouts/docs/shared.js
++++ b/dist/layouts/docs/shared.js
+@@ -48,11 +48,23 @@ const defaultTransform = (option, node) => {
+     };
+ };
+ function getSidebarTabs(pageTree, { transform = defaultTransform } = {}) {
++    function getFirstInternalPage(node) {
++        if (node.index) return node.index;
++        for (const child of node.children) {
++            if (child.type == 'page' && !child.external) return child;
++            if (child.type == 'folder') {
++                const res = getFirstInternalPage(child);
++                if (res) return res;
++            }
++        }
++        return null;
++    }
++
+     function findOptions(node) {
+         const results = [];
+         if (node.root) {
+-            const index = node.index ?? node.children.at(0);
+-            if (index?.type === 'page') {
++            const index = node.index ?? getFirstInternalPage(node) ?? node.children.at(0);
++            if (index?.type === 'page' && !index.external) {
+                 const option = {
+                     url: index.url,
+                     title: node.name,
 diff --git a/dist/layouts/docs/sidebar.js b/dist/layouts/docs/sidebar.js
 index 78275f9777980def8d16e74d255877045f87402a..4555a0125dbc9ac71701699073e5ff395672f3a6 100644
 --- a/dist/layouts/docs/sidebar.js

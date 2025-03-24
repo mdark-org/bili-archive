@@ -12,7 +12,7 @@ function generateRssFeed(category: string) {
     image: config.feed?.image ?? `${site}/logo.png`,
     favicon: config.feed?.favicon ?? `${site}/favicon.ico`,
     copyright: config.feed?.copyright ?? 'Auto2Doc',
-};
+  };
   const feed = new Feed(feedOptions);
   return feed;
 }

@@ -43,7 +43,7 @@ export const config: Config = {
       links: [
         {
           type: 'icon',
-          url: `${baseUrl}/rss.xml`,
+          url: `${baseUrl}/rss`,
           icon: <Rss />,
           label: 'RSS'
         }

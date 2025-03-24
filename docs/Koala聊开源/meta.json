@@ -2,6 +2,6 @@
   "title": "Koala聊开源",
   "pages": ["..."],
   "description": "了解科技资讯、把握行业脉搏。每周快速浏览 Hacker News 精选。",
-  "icon": "Newspaper",
+  "icon": "/image/koala.png",
   "root": true
 }

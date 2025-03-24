@@ -2,6 +2,6 @@
   "title": "小戴晨读",
   "pages": ["..."],
   "description": "资讯连连看，消灭信息差。",
-  "icon": "Newspaper",
+  "icon": "/image/refnews.png",
   "root": true
 }

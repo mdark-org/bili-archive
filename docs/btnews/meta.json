@@ -1,7 +1,7 @@
 {
   "title": "睡前消息",
-  "pages": ["..."],
+  "pages": ["[RSS](https://bili-archive.vercel.app/btnews/rss.xml)", "..."],
   "description": "热河省蛮子，刘亦菲粉丝。",
-  "icon": "Newspaper",
+  "icon": "/image/btnews.png",
   "root": true
 }
