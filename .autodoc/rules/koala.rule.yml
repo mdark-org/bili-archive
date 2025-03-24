@@ -14,7 +14,7 @@ match:
         script: .autodoc/scripts/bilibili/{{owner.name}}.mjs
         condition:
           owner.mid: 489667127
-          title: "科技周报"
+          title: "(科技|Hacker\s?News\s?)周报"
         template:
           filepath: docs/Koala聊开源/{{title}}.md
           prompt:
