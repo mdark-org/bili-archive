@@ -1,4 +1,4 @@
-import {generateRssFeed, tree} from "../rss";
+import {collectRSSPages, generateRssFeed, tree} from "../rss";
 
 export async function GET(request: Request, {
   params,
