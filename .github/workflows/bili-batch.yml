@@ -36,6 +36,9 @@ on:
       prompt-template:
         description: "prompt-template"
         required: false
+      branch:
+        description: "branch"
+        required: false
 
 env:
   mid: ${{ inputs.mid }}
@@ -44,7 +47,7 @@ env:
   system-prompt-template: ${{ inputs.system-prompt-template }}
   model: ${{ inputs.model }}
   exec-even-exist: ${{ inputs.exec-even-exist || 'false' }}
-  branch: 'batch/${{inputs.mid}}/${{inputs.keywords}}'
+  branch: ${{ inputs.branch || format('batch/{0}/{1}', inputs.mid, inputs.keywords) }}
 jobs:
   batch-get-video:
     runs-on: ubuntu-latest
