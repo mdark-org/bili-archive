@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^6.12.6",
     "@content-collections/core": "^0.8.2",
     "@content-collections/mdx": "^0.2.2",
+    "@content-collections/markdown": "^0.1.4",
     "@content-collections/next": "^0.2.6",
     "@fuma-comment/react": "^1.2.1",
     "@fuma-comment/server": "^1.2.1",

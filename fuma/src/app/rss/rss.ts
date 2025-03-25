@@ -1,7 +1,7 @@
 import {config} from "../../../config";
 import {Feed} from "feed";
 import {source} from "@/lib/source";
-
+import {compileMarkdown} from "@content-collections/markdown";
 export function generateRssFeed(category: string) {
   const site = config.baseUrl
   const feedOptions = {
@@ -30,21 +30,25 @@ export function dfs(pages: Item[], node: Node) {
   }
 }
 
-export function collectRSSPages(root: Node & {type: 'folder'}, feed: Feed) {
+// @ts-ignore
+const cacheFn = async (i, compute) => compute(i)
+
+export async function collectRSSPages(root: Node & {type: 'folder'}, feed: Feed) {
   const pages = [] as Item[]
   root.children.forEach(it => dfs(pages, it));
   const ps = pages
     .filter(it => it.type === 'page' && !it.external)
     .map(it => source.getPage(it.url.replace('/', '').split('/')))
-    .toSorted((a,b) => (a?.data?.date ?? 0) - (b?.data?.date ?? 0))
-  ps.forEach(p => {
-    feed.addItem({
-      id: p!.data.bvid,
-      date: new Date(p!.data.date * 1000),
-      title: p!.data.title,
-      description: p!.data.description ?? "",
-      link: `${config.baseUrl}${p!.url}`,
-      content: p!.data.content,
-    })
-  })
+    .toSorted((a,b) => (b?.data?.date ?? 0) - (a?.data?.date ?? 0))
+    for (const p of ps) {
+      const res = await compileMarkdown({cache: cacheFn}, p!.data)
+      feed.addItem({
+        id: p!.data.bvid,
+        date: new Date(p!.data.date * 1000),
+        title: p!.data.title,
+        description: p!.data.description ?? "",
+        link: `${config.baseUrl}${p!.url}`,
+        content: res,
+      })
+    }
 }

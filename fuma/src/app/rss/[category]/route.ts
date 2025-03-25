@@ -15,7 +15,7 @@ export async function GET(request: Request, {
     })
   }
   // @ts-ignore
-  collectRSSPages(root, feed)
+  await collectRSSPages(root, feed)
   return new Response(feed.rss2(), {
     headers: {
       'content-type': 'application/xml',
