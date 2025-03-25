@@ -1,8 +1,8 @@
 import {config} from "../../../config";
-import {Feed} from "feed";
+import {Feed, FeedOptions} from "feed";
 import {source} from "@/lib/source";
 import {compileMarkdown} from "@content-collections/markdown";
-export function generateRssFeed(category: string) {
+export function generateRssFeed(category: string, feedOption?: Partial<FeedOptions>) {
   const site = config.baseUrl
   const feedOptions = {
     title: config.feed?.title ?? `${config.title} | RSS Feed`,
@@ -13,6 +13,7 @@ export function generateRssFeed(category: string) {
     image: config.feed?.image ?? `${site}/logo.png`,
     favicon: config.feed?.favicon ?? `${site}/favicon.ico`,
     copyright: config.feed?.copyright ?? 'Auto2Doc',
+    ...feedOption,
   };
   const feed = new Feed(feedOptions);
   return feed;
@@ -39,6 +40,8 @@ export async function collectRSSPages(root: Node & {type: 'folder'}, feed: Feed)
   const ps = pages
     .filter(it => it.type === 'page' && !it.external)
     .map(it => source.getPage(it.url.replace('/', '').split('/')))
+    .filter(it => it)
+    .filter(it => it!.data.rss !== false)
     .toSorted((a,b) => (b?.data?.date ?? 0) - (a?.data?.date ?? 0))
     for (const p of ps) {
       const res = await compileMarkdown({cache: cacheFn}, p!.data)

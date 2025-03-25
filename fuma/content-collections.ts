@@ -15,6 +15,7 @@ const docs = defineCollection({
       ...createDocSchema(z),
       date: z.coerce.number(),
       bvid: z.string().optional(),
+      rss: z.boolean().optional().default(true),
     }
   },
   transform: transformMDX,
