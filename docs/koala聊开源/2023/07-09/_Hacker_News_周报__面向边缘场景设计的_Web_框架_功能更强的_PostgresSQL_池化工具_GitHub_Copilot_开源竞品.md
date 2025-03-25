@@ -34,10 +34,22 @@ Croner是基于JavaScript编写的定时编排工具，功能丰富且无外部�
 
 ---
 ### 一周 AI 小结
+
+接下来是一周AI小结。
+
 https://stability.ai/blog/stable-diffusion-sdxl-1-announcement 及 https://stability.ai/blog/stable-beluga-large-instruction-fine-tuned-models
+
+一，Stability AI本周陆续发布了开源图片模型SDXL1.0和语言模型Stable Beluga 2。
+SDXL1.0在图片生成结果上逼近Midjourney。Stable Beluga 2则是在lama 2的基础上进行调优，得到更好的性能，两者都体现了开源模型的强大活力。
+
 https://github.com/continuedev/continue
+
+二，开源AI编程助手Continue发布，与IDE深度集成，默认使用GPT4，但也支持其他模型。
+基于其开源属性，它被开发者提供了更强的定制能力，是否可以与GitHub Copilot等产品相比还有待观察。
+
 https://the-decoder.com/ai-researcher-geoffrey-hinton-thinks-ai-has-or-will-have-emotions
-接下来是一周AI小结。一，Stability AI本周陆续发布了开源图片模型SDXL1.0和语言模型Stable Beluga 2。SDXL1.0在图片生成结果上逼近Midjourney。Stable Beluga 2则是在lama 2的基础上进行调优，得到更好的性能，两者都体现了开源模型的强大活力。二，开源AI编程助手Continue发布，与IDE深度集成，默认使用GPT4，但也支持其他模型。基于其开源属性，它被开发者提供了更强的定制能力，是否可以与GitHub Copilot等产品相比还有待观察。三，AI教父Jeffrey Hinton在最近的演讲中表示，深度学习可以使AI系统产生沮丧和愤怒等情感，其中对情感的定义和尝试中的还有一些区别，这也引起了公众对AI安全的进一步关注。
+
+三，AI教父Jeffrey Hinton在最近的演讲中表示，深度学习可以使AI系统产生沮丧和愤怒等情感，其中对情感的定义和尝试中的还有一些区别，这也引起了公众对AI安全的进一步关注。
 
 ---
 

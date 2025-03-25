@@ -40,14 +40,19 @@ https://www.thomasfriday.com/cuboid/
 ---
 
 ### 一周 AI 小结
+
+接下来是本周AI小结：
+
 https://twitter.com/OpenAI/status/1677029947544838144
 https://twitter.com/OpenAI/status/1676072388436594688
 https://twitter.com/openai/status/1677015057316872192
-https://wccftech.com/inflection-ai-develops-supercomputer-equipped-with-22000-nvidia-h100-ai-gpus
-https://github.com/AntonOsika/gpt-engineer
-接下来是本周AI小结：
+
 1. OpenAI连续发布多项更新，GPT4 API开始对所有付费用户开放，ChatGPT中的浏览器插件因安全性考虑暂时禁用，下周ChatGPT付费用户将可以开始使用code interpreter插件。
+
+https://wccftech.com/inflection-ai-develops-supercomputer-equipped-with-22000-nvidia-h100-ai-gpus
 2. AI初创公司inflection打造了一台由22000张Nvidia H100 GPU组成的超级电脑，据分析该超级电脑将包含近700个四节点机架。在当下GPU供货紧张的情况下，业界认为inflection能获得如此多的GPU与其被Nvidia投资有很大关系。
+
+https://github.com/AntonOsika/gpt-engineer
 3. GPT Engineer是一个基于OpenAI GPT API深度优化的代码助手，通过输入提示词生成完整的代码项目，并在过程中支持微调和分步骤查看。
 
 以上就是本期Hacker News周报摘要，谢谢您的收看。

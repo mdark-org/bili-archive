@@ -45,16 +45,25 @@ codespelunker 是一个命令行代码工具，输入 CS 之后就能在当前�
 ---
 
 ### 本周 AI 小结
-https://github.com/ggerganov/llama.cpp/pull/1827
-https://techcrunch.com/2023/06/12/meta-open-sources-an-ai-powered-music-generator 
-https://github.com/baichuan-inc/baichuan-7B 
-https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier
 
 接下来是本周 AI 小结：
 1. llama.cpp 项目实现了完整的 GPU 加速功能，大幅处理速度显著提升。
+
+https://github.com/ggerganov/llama.cpp/pull/1827
+
 2. Meta 开源音乐生成模型 MusicGen，可通过输入文本或旋律片段生成音乐。
+
+https://techcrunch.com/2023/06/12/meta-open-sources-an-ai-powered-music-generator
+
 3. 百川智能发布百川 7B 模型，基于和 LLaMA 相同的模型设计，面向中文进行了增强训练。
+
+https://github.com/baichuan-inc/baichuan-7B
+
 4. 咨询公司麦肯锡预测，生成式 AI 未来每年可产生 2.6 万亿至 4.4 万亿美元的价值。
+
+https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier
+
+--- 
 
 以上就是本期 Hacker News 周报摘要，谢谢您的收看。
 

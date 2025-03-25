@@ -34,8 +34,11 @@ https://github.com/SAWARATSUKI/ServiceLogos
 ---
 
 ### MyShell 发布 OpenVoice V2 版本 和 苹果 AI 发力
+
 https://github.com/myshell-ai/OpenVoice
+
 https://github.com/apple/corenet
+
 本周AI方面将分享两个项目，首先是由MyShell带来的Open Voice V2版本。Open Voice可以精确的克隆声音，例如通过一个人已有的语音内容，生成用他的声音讲述其他内容音频，也可以对已有的音频调整音色，甚至将音频转化为其他语言的音频，同时保持音色不变。本次发布的V2版本在音质方面有了提升，同时实现了多语言转换，并且可以被免费商用。
 其次是苹果公司发布了名为CoreNet的神经网路训练库，同时发布了基于该库训练的Open ELM语言模型和CadLib视觉识别模型。值得一提的是，与其他大语言模型相比，Open ELM语言模型参数数量较少，最小的模型仅270兆参数，最大的模型也只有3B参数。
 Koala认为，Open Voice V2的发布让AI的用途又近了一步。以我们的技术频道为例，未来在技术成熟时，我们可能可以将人工录制的中文视频节目转换为英文视频传播到海外。苹果本轮的AI发布也符合我们之前的预测，通过推出参数较小的模型，满足在苹果自家手机和电脑等硬件设备终端运行的需求，最终实现离线的终端AI助手。

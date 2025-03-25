@@ -52,6 +52,7 @@ VS Code 是目前非常主流的代码编辑器之一。大家在使用代码编
 ---
 
 ### signals｜PREACT 状态管理新方案
+
 [https://preactjs.com/blog/introducing-signals/](https://preactjs.com/blog/introducing-signals/)
 
 最后是一篇文章，前端框架 Preact 的作者最近发布了一个新的思路 signals。它是一种更好的状态管理工具。这篇文章详细介绍了 signals 相比传统方案的各种优点，无论在代码的简洁程度还是性能上，都具有非常巨大的优势。这是否会是新一轮性能优化的方向，大家可以去深入了解。

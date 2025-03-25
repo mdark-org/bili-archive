@@ -9,29 +9,44 @@ bvid: BV1nL4y1s7q1
 欢迎收看第589期Hacker News周报。
 
 ---
+### Hibiki
 
-HapyKit，自称是一个新的强大前端框架，可开发现代化的动态前端应用，而不必使用JavaScript。
+https://www.hibikihtml.com/
+
+Hibiki 自称是一个新的强大前端框架，可开发现代化的动态前端应用，而不必使用JavaScript。
 与之前周报中曾介绍过的一些类似方案一样，大家都在考虑减少JavaScript的使用。
 在我们做的调研中，很多同学通过弹幕投票也表达过前端开发工具过于复杂。
 这些新的框架是否已生产可用，还不得而知，不过前端开发正在寻求新的方向，看来已是事实。
 
 ---
+### Systemd by example
+
+https://seb.jambor.dev/posts/systemd-by-example-part-1-minimization/
 
 Systemd是一个常用的系统服务，在日常使用中，大家可能不一定了解它的使用细节。
+
 这篇博客的作者介绍了他开发的一个Systemd使用的cheat sheet，以及他开发的初衷，通过修改配置文件，你可以观察Systemd的工作方式是否符合你的预期，进一步掌握它的使用技巧。
 
 ---
+### Malloy | SQL 方言
+https://github.com/malloydata/malloy
 
-Moloy是一个实验性语言，用来描述数据的关联关系和变化方式，与上一期介绍的PRQL一样，它们都是SQL的一种方言，也会转译为SQL。
+Malloy是一个实验性语言，用来描述数据的关联关系和变化方式，与上一期介绍的PRQL一样，它们都是SQL的一种方言，也会转译为SQL。
 虽然这种新兴工具的使用性还有待观察，但可由此看出业界对查询语言的研究方向。
 
 ---
+
+### Rich CLI
 
 Rich-cli是用Python编写的命令行工具，是基于一个使用非常广泛的命令行库Rich开发的。
 Rich可以帮助你在终端上打印各种格式丰富的内容，而Rich-cli就是对Rich功能的进一步简化。
 如果你是命令行的重度使用者，可以了解一下这个工具，看是否合用。
 
 ---
+
+### 博客文章 ｜ 我在AWS上发现数了以千计的开放数据库
+
+https://infosecwriteups.com/how-i-discovered-thousands-of-open-databases-on-aws-764729aa7f32
 
 最后是一篇博客，博客作者介绍了他是如何在AWS上发现数以千计的开放数据库的。
 在作者的hack经历中，他首先对IP段进行了扫描，再对IP特定端口的返回结果进行记录后，他就获得了几十万条结果。

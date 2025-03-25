@@ -37,16 +37,19 @@ Logicboard 是一个在线编程工具，支持多人实时协同编辑、云端
 ---
 ### AI 小结
 
-https://www.tii.ae/news/uaes-falcon-40b-now-royalty-free 
-https://technomancers.ai/japan-goes-all-in-copyright-doesnt-apply-to-ai-training 
-https://www.theverge.com/2023/5/30/23742123/nvidia-stock-ai-gpu-1-trillion-market-cap-price-value 
-https://www.opera.com/zh-cn/one
 
 接下来是本周 AI 小结：
 1. 阿联酋技术创新研究院开源的大模型 Falcon 40B，并被免版税使用。Falcon 作为 Hugging Face 排行榜中目前名列前茅的大语言模型，对其调整可能会激发更多基于 Falcon 二次训练的新项目。
+https://www.tii.ae/news/uaes-falcon-40b-now-royalty-free
+
 2. 日本政府宣布不会对 AI 训练中使用的数据实施版权保护，以此推动日本在 AI 领域的发展速度。
+https://technomancers.ai/japan-goes-all-in-copyright-doesnt-apply-to-ai-training
+
 3. Nvidia 达到万亿美元市值，其中 AI 领域爆发引起的 GPU 需求是重要的推动力。
+https://www.theverge.com/2023/5/30/23742123/nvidia-stock-ai-gpu-1-trillion-market-cap-price-value
+
 4. 老牌浏览器厂商 Opera 计划发布 AI 就绪的浏览器 One，从浏览器层面充分发挥与 AI 的交互能力。
+https://www.opera.com/zh-cn/one
 
 ---
 

@@ -5,10 +5,13 @@ tags: []
 date: 1664065800
 bvid: BV1Je4y1r7B4
 ---
+
+了解科技资讯，把握行业脉搏，大家好，我是Koala。欢迎收看第621期Hacker News周报。
+
 ### GitUI｜Git 终端 UI
 https://github.com/extrawurst/gitui
 
-了解科技资讯，把握行业脉搏，大家好，我是Koala。欢迎收看第621期Hacker News周报。首先介绍一个用Rust开发的Git命令行工具GitUI。Git是研发同学日常离不开的工具。Git本身的命令行功能比较简洁，当需要一些复杂功能时，就需要在网页端，如GitHub或GitLab上去使用。GitUI就是一个在命令行里的完整的GUI框架，可以让你在命令行里完成各类操作，而不需要在网页和命令行之间切换。
+首先介绍一个用Rust开发的Git命令行工具GitUI。Git是研发同学日常离不开的工具。Git本身的命令行功能比较简洁，当需要一些复杂功能时，就需要在网页端，如GitHub或GitLab上去使用。GitUI就是一个在命令行里的完整的GUI框架，可以让你在命令行里完成各类操作，而不需要在网页和命令行之间切换。
 
 ---
 
@@ -58,6 +61,8 @@ LiteFS是Fly.io开发开源的新项目。之前已经介绍过Fly.io在SQLite�
 https://twitter.com/markrussinovich/status/1571995117233504257
 
 最后是关于微软云服务Azure CTO Mark Russinovich最近发布的一篇推文。他表示，为了带来更好的安全性和可靠性，所有新项目都应该使用Rust的开发，而不是C和C++。这篇推文的用语比较偏激，引起了舆论的关注。InfoQ中国对此有一篇非常深入的报道，介绍了Mark的过往经历，以及与他观点相关的技术背景，对细节感兴趣的同学可以去阅读InfoQ的这篇文章。
+
+---
 
 以上就是本期Hacker News周报摘要，谢谢您的收看。
 

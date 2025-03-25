@@ -8,9 +8,14 @@ bvid: BV1qv411F7DB
 了解科技资讯，把握行业脉搏，大家好，我是 Koala，欢迎收看第 678 期 Hacker News 周报。
 
 ---
-
 ### Vite 5.0 发布
-前端构建工具 Vite 发布了新的主版本 5.0，在社区生态方面有许多提升，例如单元测试框架 Vitest 即将发布 1.0 版本，构建在 Vite 之上的 Meta 框架 WMR 和 Astro 也在快速发展。Vite 也将其核心内部依赖 Rollup 升级至最新的 4.0 版本。在性能方面，5.0 也有所提升，团队的计划是在未来基于 Rust 替换部分内部实现，目前的版本还在为这一计划进行铺垫。
+[https://vitejs.dev/blog/announcing-vite5](https://vitejs.dev/blog/announcing-vite5)
+
+前端构建工具Vite发布了新的主版本5.0。 在社区生态方面有许多提升。
+
+例如单元测试框架Vitest即将发布1.0版本，构建在Vite之上的Meta框架Volar,Nitro也在快速发展。 Vite也将其核心内部依赖 Rollup 升级至最新的4.0版本。
+
+在性能方面，5.0也有所提升。 但更大的计划是在未来基于Rust替换部分内部实现，目前的版本还在为这一计划进行铺垫。
 
 ---
 
@@ -34,13 +39,17 @@ https://www.anthropic.com/index/claude-2-1
 
 ### tldraw 的白板+AI 无限创意
 https://tldraw.substack.com/p/make-real-the-story-so-far
+
 https://twitter.com/tldraw/status/1727728068968460778
+
 之前多次登上我们周报的 tldraw 项目，最近也凭借其与 AI 的结合成为网红。tldraw 通过与 OpenAI 的视觉识别模型 GPT-4V 集成，开发了一个名为 Make Real 的图片生成代码功能，并基于 tldraw 已有的白板能力，使得与 AI 交互完成代码的用户体验非常流畅。在大量用户试用并发布有趣的 Demo 之后，tldraw 官方也发布博客，详细介绍了该功能背后的实现原理。在此之后，tldraw 也没有停止探索 AI 的脚步，近期又发布了名为 Draw Fast 的 AI 协作绘画功能，效果同样令人印象深刻。
 
 ---
 
 ### Stripe 促销日在线概览页面
+
 https://bfcm.stripe.dev/
+
 本周是海外电商的促销日 Black Friday，支付技术领域的独角兽 Stripe 发布了一个有趣的在线概览页面，能够实时查看促销期间通过 Stripe 完成的交易总额、总交易笔数和每分钟交易笔数等信息。同样令人关注的是，目前 Stripe 的 API 可用性保持在 99.999% 以上，且负载保持在总容量 10% 以内，证明其基础设施还能承载更多用户。这样透明的呈现方式有助于用户提升对适用 Stripe 开发支付功能的信心和愿望。
 
 ---

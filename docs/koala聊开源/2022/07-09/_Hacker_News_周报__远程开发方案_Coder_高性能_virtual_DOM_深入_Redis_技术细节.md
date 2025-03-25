@@ -7,6 +7,9 @@ bvid: BV1UB4y1t7cW
 ---
 了解科技资讯，把握行业脉搏，大家好，我是Koala，欢迎收看第616期Hacker News周报。
 
+### 远程开发方案 Coder
+https://coder.com/
+
 首先介绍的是开源远程开发方案Coder。此前Coder团队开源了应用非常广泛的同类项目Code Server，可以在浏览器中运行VS Code。本次开源的同名开源项目Coder，是更为一体化的远程开发方案，可以在任何基础设施上运行，并且集成了模板、Workspace等功能，以AGPL License发布。
 
 ---
@@ -43,6 +46,8 @@ K8S领域的创新还在继续，知名K8S厂商Rancher在被SUSE收购之后，
 https://architecturenotes.co/redis/
 
 最后推荐一篇介绍Redis技术细节的文章。在之前的视频中，我们曾介绍过号称高性能Redis替代品的Dragonfly。近日，Redis团队关于自己与Dragonfly性能对比的博克，也让Redis成为了新闻热点。不过作为目前依然是缓存领域事实标准的Redis，其架构设计一直是大家学习的对象，希望这篇文章帮助初学者更好的理解Redis。
+
+---
 
 以上就是本期Hacker News周报摘要，谢谢您的收看。
 
