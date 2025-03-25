@@ -7,12 +7,20 @@ bvid: BV1mu4y1n7hc
 ---
 了解科技资讯，把握行业脉搏。大家好，我是 Koala。欢迎收听第673期 Hacker News 周报。
 
-在越来越多的应用容器化的时代，容器镜像的体积是非常值得优化的。Dive 是一款用来探索和分析 Docker 镜像内容的开源命令行工具。它可以清晰地展示镜像中的每一层文件变更，直观地看到镜像里的新增、修改和删除的文件，并给出镜像优化建议。除了快速定位镜像中的体积来源，并且分析裁剪的方式，Dive 也十分适合集成在 CI/CD 流程中，持续观察并校验镜像体积是否发生了预期之外的增长。
+### Dive｜快速分析优化容器镜像
+
+https://github.com/wagoodman/dive
+
+在越来越多的应用容器化的时代，容器镜像的体积是非常值得优化的。
+Dive 是一款用来探索和分析 Docker 镜像内容的开源命令行工具。
+它可以清晰地展示镜像中的每一层文件变更，直观地看到镜像里的新增、修改和删除的文件，并给出镜像优化建议。除了快速定位镜像中的体积来源，并且分析裁剪的方式，Dive 也十分适合集成在 CI/CD 流程中，持续观察并校验镜像体积是否发生了预期之外的增长。
+
 ---
 ### LocalSend｜Airdrop 跨平台开源替代品
 [https://github.com/localsend/localsend](https://github.com/localsend/localsend)
 
 LocalSend 是一款开源的跨平台应用，使用局域网在设备之间进行快速安全的文件和消息传输，无需互联网连接。你可以将它视为 Airdrop 的开源跨平台替代品。它不依赖任何云服务，开箱即用，支持 HTTPS 和 TLS 进行端到端加密。LocalSend 基于 Flutter 开发，实际既可以原生应用的形式运行在所有主流平台上，也可以通过 Web 直接使用。
+
 ---
 ### Formbricks｜开源用户体验管理和调研平台
 [https://github.com/formbricks/formbricks](https://github.com/formbricks/formbricks)

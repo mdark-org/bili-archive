@@ -52,8 +52,12 @@ Dioxus是一个使用Rust语言编写的跨平台GUI框架，支持构建Web、�
 Katana是一个Go语言编写的内容抓取框架，由Project Discovery团队开发维护。它可以通过HTTP请求抓取网页，也可以启用headless模式，使用内置的Chrome浏览器渲染JavaScript并爬取。Katana可以方便的定制抓取的行为，它也提供了增量抓取、速率限制等选项，帮助遵循目标网站的规则。输出支持JSON格式，还可以存储每个请求的详细信息。Katana既能作为命令行工具使用，也可以作为库集成到其他Go语言程序中。它的出现大大降低了基于Go编写内容抓取程序的难度。
 
 ---
+### Vim 之父去世
+8月5日，文本编辑器Vim之父Bram Moolenaar的家人公布了他去世的消息，网络上充满了对他的缅怀。
 
-8月5日，文本编辑器Vim之父Bram Moolenaar的家人公布了他去世的消息，网络上充满了对他的缅怀。本周Hacker Newsletter主编Cale也在开头回忆了与Bram一起在乌干达做慈善的经历。他还说我一生中使用Vim的时间比不使用Vim的时间要多的多。Bram永远是一个总是为别人做更多事情的人。
+本周Hacker Newsletter主编Cale也在开头回忆了与Bram一起在乌干达做慈善的经历。他还说我一生中使用Vim的时间比不使用Vim的时间要多的多。Bram永远是一个总是为别人做更多事情的人。
+
+---
 
 以上就是本期Hacker News周报摘要，谢谢您的收看。
 

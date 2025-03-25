@@ -13,6 +13,14 @@ bvid: BV1Fv411c781
 
 00:09 React Datasheet Grid｜ 开源 Airtable 式表格组件
 
+https://react-datasheet-grid.netlify.app/
+https://github.com/philippta/flyscrape
+https://www.loro.dev/
+https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/
+https://tinyllms.vercel.app/
+https://github.com/steveruizok/perfect-freehand
+https://alan.norbauer.com/articles/browser-debugging-tricks
+https://tembo.io/blog/pgmq-self-regulating-queue/
 Flyscript 是一个独特的数据抓取工具，基于 Go 编写，使其具有高效的性能，但同时支持用户使用 Javascript 编写脚本，提取网页中的数据，又保持了灵活性，降低使用者的学习成本。在开发体验方面，Flyscript 也做了许多努力，例如提供开发者模式，用于实时查看提取的结果，加速脚本开发。
 
 ---

@@ -14,9 +14,6 @@ Koala 点评：复制粘贴即可使用的 UI 组件库，正在被越来越多�
 
 ---
 
-### Aceternity UI｜设计感极强的 UI 组件
-[https://ui.aceternity.com/components](https://ui.aceternity.com/components)
-
 ---
 
 Spreadsheets are all you need 是一个有趣的 AI 原理讲解项目，作者通过 Excel 中内置的哥里函数就实现了与 GPT 类似的 Transformer 架构。读者可以通过观看视频课程，跟随作者逐步理解，也可以直接下载对应的 Excel 文件在本地交互体验。

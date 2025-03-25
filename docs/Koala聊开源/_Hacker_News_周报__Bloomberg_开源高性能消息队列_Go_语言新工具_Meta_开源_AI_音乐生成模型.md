@@ -10,15 +10,11 @@ bvid: BV1m44y1w7DU
 
 ---
 
-### Bloomberg 开源高性能消息队列 BlazingMQ  [00:09](https://mailchi.mp/hackernewsletter/662663)
-
 ---
 
 日前，开源列式数据库Hydra发布了1.0版本。 Hydra是一款建立在PostgreSQL之上的开源列式数据库，其目标是兼顾PostgreSQL的可扩展性和数据仓库的高性能。 Hydra通过列式存储、向量化执行、查询并行化等技术，大幅提升了聚合查询的性能。 根据官方公布的基准测试，在求和、计数等聚合查询上，Hydra的查询速度要比原生PostgreSQL快数百甚至上千倍，并且用户可以继续使用原有的SQL语法和客户端工具，无需修改代码。 同时，它还提供了完整的PostgreSQL扩展和自定义函数支持，用户可以根据自己的需求进行定制。
 
 ---
-
-### 开源列式数据库 Hydra 发布 1.0 版本  [00:37](https://mailchi.mp/hackernewsletter/662663)
 
 ---
 
@@ -26,7 +22,6 @@ PythonMonkey是一个用于实现Python和JavaScript互操作性的项目。 它
 
 ---
 
-### PythonMonkey｜实现 Python 与 JavaScript 的互操作性  [01:22](https://mailchi.mp/hackernewsletter/662663)
 
 ---
 
@@ -34,7 +29,6 @@ PythonMonkey是一个用于实现Python和JavaScript互操作性的项目。 它
 
 ---
 
-### gonew｜Go 语言新工具  [01:44](https://mailchi.mp/hackernewsletter/662663)
 
 ---
 
@@ -49,8 +43,6 @@ PythonMonkey是一个用于实现Python和JavaScript互操作性的项目。 它
 接下来是一周AI小结： 一，Meta开源AI音乐生成项目AudioCraft，其中包含MusicGen、AudioGen、EnCodec三个模型，基于Meta拥有版权的两万多小时音乐和其他公共音效训练而成。 作为听众的您是否支持使用AI生成音乐呢？ 二，Google DeepMind新推出的视觉语言动作模型RT2，使机器人不仅能够理解人类指令，还能将其转化为行动。 三，Creative Polly是一个基于AI学习新语言的项目，通过AI对话和翻译等功能，帮助用户更快学习一门新语言，且不再需要支付外教费用。
 
 ---
-
-### 一周 AI 小结  [02:54](https://mailchi.mp/hackernewsletter/662663)
 
 ---
 
