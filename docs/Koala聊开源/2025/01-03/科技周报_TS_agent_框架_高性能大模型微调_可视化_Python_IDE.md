@@ -5,6 +5,7 @@ tags: []
 date: 1740294589
 bvid: BV1G5ASetENw
 ---
+
 了解科技资讯，把握行业脉搏，大家好，我是 Koala，欢迎收看科技周报。
 
 ---
@@ -23,6 +24,7 @@ https://github.com/unslothai/unsloth
 
 想让你的 Deepseek、千问等大模型微调速度翻倍，同时还能节省 70% 的内存吗？Unsloth 帮你实现。这个工具能让您在各种基准测试上轻松微调模型，而且对新手非常友好。你只需要准备好数据集，点击一下 Run All，就能快速得到一个可以导出 GGUF、Ollama 或上传到 Hugging Face 的微调模型。Unsloth 支持 Llama、Deepseek 等多种模型，而且对包含量化在内的各种常见优化，也支持得不错，还能在保证精度的情况下，减少显存占用。
 
+
 ---
 
 ### Scripton | 可视化 Python IDE
@@ -30,6 +32,7 @@ https://github.com/unslothai/unsloth
 https://scripton.dev/
 
 Scripton 是一款新颖的 Python IDE，它最大的亮点就是能够实时可视化你的代码运行结果。不需要额外的 Notebook、服务器或者浏览器，它集成了 Plotly 和 Observable Plot 绘图工具，可以直接在 IDE 内部的选项卡中显示。Scripton 还内置了强大的 2D 栅格图形 API，方便你快速创建各种图形和交互式界面。此外，它还提供了一个功能丰富的 REPL，支持多行编辑、代码折叠和高亮显示异常信息。调试功能也很简单易用，无需任何特殊配置，设置断点即可开始调试。目前，Scripton 仅支持 MacOS，但未来计划支持 Windows 和 Linux。
+
 
 ---
 
