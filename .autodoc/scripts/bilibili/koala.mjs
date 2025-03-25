@@ -26,7 +26,7 @@ export const listen = function(data) {
     if (regex.test(title)) {
         const sanitizedTitle = title.replace(/[^\p{L}\p{N}_.\-]/gu, '_')
         return {
-            filepath: `docs/koala聊开源/${datePath}/${sanitizedTitle}.md`,
+            filepath: `docs/Koala聊开源/${datePath}/${sanitizedTitle}.md`,
         }
     }
 }
@@ -40,7 +40,7 @@ export const template = function(data) {
     if (regex.test(title)) {
         const sanitizedTitle = title.replace(/[^\p{L}\p{N}_.\-]/gu, '_')
         return {
-            filepath: `docs/koala聊开源/${datePath}/${sanitizedTitle}.md`,
+            filepath: `docs/Koala聊开源/${datePath}/${sanitizedTitle}.md`,
         }
     }
 }
