@@ -12,35 +12,40 @@ bvid: BV1om421V7nA
 ---
 
 ### Revideo
-该小节相关链接：https://github.com/redotvideo/revideo
+
+https://github.com/redotvideo/revideo
 
 Revideo 是一个通过编写代码实现视频编辑的开源框架。与它功能类似的项目还有 Remotion，但 Remotion 的开源 license 存在一定使用限制，而 Revideo 则希望保持完全开源。与此同时，Revideo 基于 Motion Canvas 这个强大的动画编辑器开发，因此在 Revideo 中能够渲染出更加流畅复杂的动画效果，提升视频质感。Koala 认为基于代码编辑视频的工具，与传统视频编辑软件相比，能够提供更好的实时预览能力，以及服务端并行渲染的能力。对于一些简单图文和动画组成的视频内容来说，确实是一个不错的选择。
 
 ---
 
 ### Piku
-该小节相关链接：https://github.com/piku/piku
+
+https://github.com/piku/piku
 
 如果你在寻找一个轻量级的 pass 解决方案，Piku 可能会是你喜爱的项目。Piku 的作用是让用户通过 Git push 一键将代码部署到服务器上。Piku 复用了 Git 的多版本代码管理能力。与此同时，当用户 push 代码建设，Piku 会针对不同编程语言，自动实现在部署服务器上安装依赖，例如对于 nodejs 程序，Piku 会自动根据 packagejson 的内容安装依赖。同时 Piku 还提供了单服务器部署多个应用，SSL 证书，缓存静态文件等常见需求。Koala 认为 Piku 这个项目最有趣之处是在于它的设计原则，如它希望能够在资源较少的低端设备上运行，对业余爱好者友好，极少 Web 依赖和尽可能少的代码，以及为所有功能提供合理的默认配置。这种极简但实用的设计原则，对许多开源项目都具有借鉴意义。
 
 ---
 
 ### Restate
-该小节相关链接：https://restate.dev/
+
+https://restate.dev/
 
 Restate 是一个持久化工作流引擎，通过将普通的函数转为可重试且可重用的持久化函数，提升应用整体的可靠性。要想实现同样的目标，开发者往往需要编写较为复杂的业务逻辑代码，而 Restate 将这些复杂都包含在了引擎内部，让极少代码保持简洁的同时，也获得了可靠性的提升。目前 Restate 支持部署函数服务在 KPS 等各种常见基础设施上，提供 JS，Java 和 Kotlin SDK 供应用使用。Koala 认为持久化工作流引擎这一概念，正在成为流行的新式中间件，它能够让应用抵抗更多异常，但同时也会增加应用的复杂度，且本身的概念也有学习成本。因此是否需要在应用中使用这类中间件，还需要仔细评估。
 
 ---
 
 ### Ice
-该小节相关链接：https://github.com/jordanbaird/Ice
+
+https://github.com/jordanbaird/Ice
 
 Ice 是一款强大的 macOS 菜单栏管理工具，它的主要功能是隐藏和显示菜单栏项目，但它不仅限于此，还涵盖了许多其他功能，例如配置菜单栏外观、设置快捷键、拖放排列菜单内容等。该工具可以手动下载安装或通过 brew 安装。需要注意的是，Ice 使用的一些系统 API，这些 API 仅在 macOS 14 及以上版本中可用。对于 Mac 重度用户来说，这个小而美的效率工具值得一试。
 
 ---
 
 ### Pastel
-该小节相关链接：https://github.com/vadimdemedes/pastel
+
+https://github.com/vadimdemedes/pastel
 
 在 React 社区中有一个基于 React 开发命令行工具的框架 Ink，可以让前端开发者用他们熟悉的方式编写响应式的命令行工具。而 Pastel 则是对 Ink 的进一步封装，为命令行工具的开发提供了类似 Nextjs 的开发体验，例如开发者可以创建文件，就完成一个命令的初始化，内置的集成实现更好的参数校验，以及自动生成帮助信息。
 

@@ -5,12 +5,15 @@ tags: []
 date: 1732420800
 bvid: BV1QQBsYZEhX
 ---
+
 了解科技资讯，把握行业脉搏，大家好，我是Koala，欢迎收看科技周报。
 
 ---
 
 ### Melt UI
-该小节相关链接：https://www.melt-ui.com/
+
+https://www.melt-ui.com/
+
 Melt UI是一款为Svelte打造的headless UI库。
 它的核心理念是给开发者更多自由，通过强大的builder API，你可以创建任何符合自己设计风格的组件，同时保持对无障碍设计的高度支持。
 简单好用是Melt UI的特点，它提供默认的非受控组件，省去了管理状态的烦恼。
@@ -22,7 +25,9 @@ Koala认为Melt UI是Svelte生态中的一股清流，结合了Radix UI和Zag.js
 ---
 
 ### Cofounder
-该小节相关链接：https://github.com/raidendotai/cofounder
+
+https://github.com/raidendotai/cofounder
+
 Cofounder是一个AI应用生成器，能够生成包含后端和数据库在内的全栈Web应用。
 其特色在于结合了AI驱动的mockup设计和模块化设计系统，实现了从整体架构到UI实现的自动化生成。
 目前已推出早期Alpha版本，但仍处于不稳定状态。
@@ -33,7 +38,9 @@ Cofounder如何保证前后端代码衔接的稳定性，是该项目最值得�
 ---
 
 ### Fireproof
-该小节相关链接：https://fireproof.storage/
+
+https://fireproof.storage/
+
 Fireproof为实时应用带来了简单直接的解决方案，无需复杂的设置，只需添加一行代码或安装包，你就能在各种客户端环境中使用实时存储。
 该项目核心是一套充分验证的CRDT数据结构，亮点在于对S3存储、IPFS等存储层进行的适配，使得Fireproof可以与各类可靠的云服务搭配使用。
 Koala认为，Fireproof提供的多个开源的示例项目，例如实时协作的AI聊天应用，让用户能够最快速度体验到Fireproof的核心功能。
@@ -41,7 +48,9 @@ Koala认为，Fireproof提供的多个开源的示例项目，例如实时协作
 ---
 
 ### Next-Forge
-该小节相关链接：https://www.next-forge.com/
+
+https://www.next-forge.com/
+
 Next-Forge是为Next.js打造的生产级应用模板，帮助开发者快速构建SaaS应用。
 它提供了一站式解决方案，从认证、支付、分析到SEO和数据库ORM，功能一应俱全。
 只需运行一行命令，即可生成一个包含Tailwind、Prisma、Clerk等工具集成的应用模板。
@@ -51,7 +60,9 @@ Koala认为，Next-Forge的设计优雅且工程化，专注于提升开发者�
 ---
 
 ### Mailpit
-该小节相关链接：https://mailpit.axllent.org/
+
+https://mailpit.axllent.org/
+
 Mailpit是一款轻量且高性能、零依赖的邮件测试工具，支持多平台使用，专为开发者设计。
 它不仅是一个SMTP服务器，还提供现代化的Web界面，让你可以查看和测试不合规的邮件，同时它内置Rest API，便于集成自动化测试。
 基于Mailpit，开发者可以通过API实现邮件的读取，将接收的邮件手动或自动通过Web SMTP服务器中继转发，以及通过WebHook在接收邮件时触发外部处理流程。
@@ -60,7 +71,9 @@ Koala认为，如果应用中涉及邮件注册、登录、订阅等功能，Mai
 ---
 
 ### MathGPT
-该小节相关链接：https://math-gpt.org/
+
+https://math-gpt.org/
+
 MathGPT是一款专为学生和数学爱好者打造的智能数学解题工具，不仅可以提供详细的逐步解题过程，还能生成针对特定题目的视频讲解，是学习和作业的好帮手。
 用户上传或拍摄题目图片，MathGPT即可识别并提供详细解答。
 最新版本还支持生成讲解视频，并根据题目为用户生成更多个性化的练习题。

@@ -14,7 +14,8 @@ Koala认为Cyber Scarecrow这款工具的思路很有意思，它利用了黑客
 ---
 
 ### Teo
-该小节相关链接：https://github.com/teodevgroup/teo
+
+https://github.com/teodevgroup/teo
 
 Teo是一个新兴的开源Web服务框架，它的特点是schema driven，也就是通过schema来驱动整个开发流程。Teo支持Rust、Node.js和Python三种主流后端语言，开发者可以根据自己的技术栈选择合适的版本。它的schema定义语法借鉴了GraphQL和Prisma的设计理念，简洁又强大。使用Teo可以快速实现数据迁移、ORM、API查询客户端等功能。它支持MySQL、PostgreSQL、SQLite和MongoDB等主流数据库。
 
@@ -25,7 +26,8 @@ Koala认为对于那些需要快速迭代的项目来说，用Teo可以让开发
 ---
 
 ### Dbmate
-该小节相关链接：https://github.com/amacneil/dbmate
+
+https://github.com/amacneil/dbmate
 
 接下来介绍一个轻量级的数据库迁移工具Dbmate，这是一个独立的命令行工具，可以帮助你轻松的管理数据库schema的版本控制。Dbmate的特点是支持多种主流数据库，包括MySQL、PostgreSQL、SQLite和ClickHouse等，且不与任何编程语言绑定，它使用纯SQL来编写迁移脚本，非常简单直观。使用Dbmate你可以很方便的创建和删除数据库，运行待处理的迁移，回滚最近的迁移等。它还支持将当前数据库schema导出为schema SQL文件，便于在Git中diff查看schema的变化。
 
@@ -34,21 +36,24 @@ Koala认为对于那些需要快速迭代的项目来说，用Teo可以让开发
 ---
 
 ### SQL Studio
-该小节相关链接：https://github.com/frectonz/sql-studio
+
+https://github.com/frectonz/sql-studio
 
 SQL Studio是一个轻量级跨平台数据库GUI客户端，支持多种主流数据库，包括SQLite、LibSQL、PostgreSQL、MySQL、MariaDB和DuckDB。它提供了数据库概览页面，展示常见元数据信息，同时可以展示每个数据表的详细元数据，例如每个数据表使用的磁盘空间大小。在自定义查询界面，你可以灵活的使用SQL访问数据库，查询结果支持无限滚动的试图，方便浏览大量数据。
 
 ---
 
 ### htmx 2.0 版本正式发布
-该小节相关链接：https://htmx.org/posts/2024-06-17-htmx-2-0-0-is-released
+
+https://htmx.org/posts/2024-06-17-htmx-2-0-0-is-released
 
 HTMX 2.0版本正式发布了，这次更新虽然没有大幅改变核心功能，但还是带来了不少值得关注的变化，首先所有的扩展都被移出了主仓库，现在有了专门的扩展网站，这样一来扩展的开发就可以不受HTMX主版本发布节奏的限制了。其次HTMX放弃了对IE浏览器的支持，此外一些默认配置也有调整，比如delete请求改用查询参数，而不是表单等。Koala认为作为一个轻量级的前端框架，一直以来HTMX都保持着稳定的更新节奏，这次的2.0版本虽然没有革命性的变化，但通过调整默认配置，移除废弃特性等方式，让整个框架变得更加现代化。
 
 ---
 
 ### TokenCost
-该小节相关链接：https://github.com/AgentOps-AI/tokencost
+
+https://github.com/AgentOps-AI/tokencost
 
 TokenCost是一个可以帮助开发者计算大语言模型API使用成本的Python库。TokenCost主要提供三个核心功能，首先是LM价格跟踪，主流的大语言模型提供商经常会更新他们的定价策略，TokenCost可以帮助开发者及时了解最新的价格变化。其次是token计数，在向OpenAI这样的服务发送请求之前，TokenCost可以准确的计算出prompt中的token数量。最后是易于集成，只需调用一个函数，就可以获得prompt或completion的成本。
 

@@ -10,7 +10,9 @@ bvid: BV1xc9FYDED3
 ---
 
 ### Ray | 大规模分布式 AI 引擎
-该小节相关链接：https://www.ray.io/
+
+https://www.ray.io/
+
 瑞是一个专为AI和机器学习设计的分布式计算引擎，能够处理从数据预处理到模型训练，推理的完整工作流。
 它支持多模态数据处理，分布式训练，模型部署等复杂任务，并且与Python生态无缝集成。
 瑞的核心优势在于它的灵活性和扩展性，能够轻松应对从单机到大规模集群的计算需求。
@@ -20,7 +22,9 @@ Koala认为，瑞由出品了TensorFlow、Spark、LLM等明星项目的UC Berkel
 ---
 
 ### DeepSeek 开源 AI 基础设施工具集
-该小节相关链接：https://github.com/deepseek-ai/open-infra-index
+
+https://github.com/deepseek-ai/open-infra-index
+
 DeepSeek团队在AGI探索中迈出了重要一步。
 过去一周，他们持续六天开源了五个核心工具库。
 这些工具都经过生产环境验证，也为需要自行部署DeepSeek开源模型的团队提供了优化的方向。
@@ -30,7 +34,9 @@ Koala认为，DeepSeek的开源举措既展示了他们的技术深度，也进�
 ---
 
 ### up-fetch | 更友好的 fetch 封装
-该小节相关链接：https://github.com/L-Blondy/up-fetch
+
+https://github.com/L-Blondy/up-fetch
+
 Up-fetch是一个更友好的fetch封装，目标是让JS中数据请求更容易实现类型安全，且对开发者友好。
 它支持标准的模式验证，自动响应解析，智能默认值等功能，同时保持了与原生fetch API的兼容性。
 Up-fetch的核心优势在于它的轻量性和灵活性，仅1.2KB大小且无依赖，适合在前端项目中替代原生fetch使用。
@@ -40,7 +46,9 @@ Koala认为，Up-fetch特别适合需要类型安全和复杂请求配置的项�
 ---
 
 ### JetKVM | 开源 KVM over IP
-该小节相关链接：https://github.com/jetkvm/kvm
+
+https://github.com/jetkvm/kvm
+
 JetKVM是一个高性能的开源KVM over IP解决方案，专门为远程管理计算机、服务器和工作站而设计。
 无论你是在处理启动故障，安装新操作系统，调整BIOS设置，还是简单的远程控制一台机器，JetKVM都能提供高效的工具。
 它的特点包括超低延迟的1080p和60FPS视频传输，通过WebRTC实现的远程访问，以及基于Golang开发带来的小小体积与高性能。
@@ -49,7 +57,9 @@ Koala认为，作为Kickstarter上的明星众筹项目，JetKVM也让大家看�
 ---
 
 ### mdq | 像 jq 一样处理 Markdown
-该小节相关链接：https://github.com/yshavit/mdq
+
+https://github.com/yshavit/mdq
+
 MDQ是一个命令行工具，灵感来源于JSON处理工具JQ，但专门用于处理Markdown文档。
 它允许你轻松提取和操作Markdown文档中的特定部分，比如标题、列表、链接等。
 通过简单的语法，你可以快速筛选出需要的内容，比如未完成的任务列表，或特定格式的链接。
@@ -60,7 +70,9 @@ Koala认为，MDQ特别适合需要自动化处理Markdown文档的场景，比�
 ---
 
 ### Nping | 实时网络可视化 Ping
-该小节相关链接：https://github.com/hanshuaikang/Nping
+
+https://github.com/hanshuaikang/Nping
+
 Nping是一个用Rust编写的Ping工具，与原生的Ping相比，Nping支持多地址并发Ping，实时数据更新和可视化图表展示。
 它不仅可以显示最大、最小和平均延迟，还能实时更新丢包率等关键指标。
 Nping同时支持IPv4和IPv6，未来还计划支持展示IP对应的国家与地区等信息。
