@@ -5,13 +5,14 @@ listen:
         post:
           mid: 489667127
           keywords: 科技周报
+          script: '.autodoc/scripts/bilibili/koala.mjs'
           filepath: docs/Koala聊开源/{{title}}.md
 
 match:
   - id: Koala聊开源-科技周报
     platform:
       bilibili:
-        script: .autodoc/scripts/bilibili/{{owner.name}}.mjs
+        script: '.autodoc/scripts/bilibili/koala.mjs'
         condition:
           owner.mid: 489667127
           title: "(科技|Hacker\\s?News\\s?)周报"
