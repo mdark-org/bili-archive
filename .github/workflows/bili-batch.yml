@@ -26,18 +26,15 @@ on:
       model:
         description: "stt model, currently only support gemini, which is cheap(free for most case), fast and good enough for such task"
         type: choice
-        default: "gemini-2.0-flash"
+        default: "gemini-2.5-flash-preview-04-17"
         options:
           - "gemini-2.5-pro-exp-03-25"
-          - "gemini-2.0-flash"
+          - "gemini-2.5-flash-preview-04-17"
       system-prompt-template:
         description: "system-prompt-template"
         required: false
       prompt-template:
         description: "prompt-template"
-        required: false
-      branch:
-        description: "branch"
         required: false
 
 env:
@@ -47,7 +44,8 @@ env:
   system-prompt-template: ${{ inputs.system-prompt-template }}
   model: ${{ inputs.model }}
   exec-even-exist: ${{ inputs.exec-even-exist || 'false' }}
-  branch: ${{ inputs.branch || format('batch/{0}/{1}', inputs.mid, inputs.keywords) }}
+  branch: 'batch/${{inputs.mid}}/${{inputs.keywords}}'
+  maxOutputTokens: ${{ inputs.maxOutputTokens || '65536' }}
 jobs:
   batch-get-video:
     runs-on: ubuntu-latest
@@ -103,6 +101,7 @@ jobs:
           token: ${{ secrets.GEMINI_TOKEN }}
           github-token: ${{ secrets.PAT }}
           model: ${{ env.model }}
+          maxOutputTokens: ${{ env.maxOutputTokens }}
           prompt-template: ${{ env.prompt-template }}
           system-prompt-template: ${{ env.system-prompt-template }}
           bvid: ${{ matrix.bvid }}
@@ -132,6 +131,7 @@ jobs:
           bili-proxy: ${{ secrets.BILI_STREAM_PROXY }}
           exec-even-exist: ${{ env.exec-even-exist }}
           branch: ${{ env.branch }}
+          maxOutputTokens: ${{ env.maxOutputTokens }}
           type: 'commit'
   get-video-chunk-3:
     needs: [batch-get-video,get-video-chunk-2]
@@ -149,6 +149,7 @@ jobs:
           token: ${{ secrets.GEMINI_TOKEN }}
           github-token: ${{ secrets.PAT }}
           model: ${{ env.model }}
+          maxOutputTokens: ${{ env.maxOutputTokens }}
           prompt-template: ${{ env.prompt-template }}
           system-prompt-template: ${{ env.system-prompt-template }}
           bvid: ${{ matrix.bvid }}
@@ -179,3 +180,4 @@ jobs:
           exec-even-exist: ${{ env.exec-even-exist }}
           branch: ${{ env.branch }}
           type: 'commit'
+          maxOutputTokens: ${{ env.maxOutputTokens }}

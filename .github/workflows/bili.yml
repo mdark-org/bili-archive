@@ -22,7 +22,7 @@ on:
         description: "markdown-template"
         required: false
         type: string
-      commit-message-template:        
+      commit-message-template:
         description: "commit-message-template"
         required: false
         type: string
@@ -33,9 +33,20 @@ on:
         type: string
         description: "gemini model"
         default: "gemini-2.0-flash"
+      maxOutputTokens:
+        description: "maxOutputTokens"
+        required: false
+        default: '65536'
+        type: string
       branch:
         description: "commit branch"
         required: false
+        type: string
+
+      commit-type:
+        description: "commit type, pr | commit"
+        required: false
+        default: 'pr'
         type: string
   workflow_dispatch:
     inputs:
@@ -66,17 +77,23 @@ on:
       exec-even-exist:
         type: 'boolean'
         required: false
-        default: 'false'
+        default: false
+        description: ' overwrite，即使分支/文件存在，也继续执行'
       model:
         description: "gemini model"
         type: choice
-        default: "gemini-2.0-flash"
+        default: "gemini-2.5-flash-preview-04-17"
         options:
           - "gemini-2.5-pro-exp-03-25"
-          - "gemini-2.0-flash"
+          - "gemini-2.5-flash-preview-04-17"
       branch:
         description: "commit branch"
         required: false
+        type: string
+      maxOutputTokens:
+        description: "maxOutputTokens"
+        required: false
+        default: '65536'
         type: string
 env:
   bvid: ${{inputs.bvid }}
@@ -88,6 +105,7 @@ env:
   commit-message-template: ${{ inputs.commit-message-template }}
   model: ${{ inputs.model }}
   branch: ${{ inputs.branch || format('fetch/{0}', inputs.bvid) }}
+  commit-type: ${{ inputs.commit-type || 'pr' }}
 jobs:
   get-video:
     runs-on: ubuntu-latest
@@ -110,6 +128,7 @@ jobs:
         if: ${{ steps.check-branch-exists.outputs.exists == 'false' || env.exec-even-exist == 'true' }}
         uses: ./.github/actions/bili-fetch
         with:
+          maxOutputTokens: ${{ inputs.maxOutputTokens }}
           token: ${{ secrets.GEMINI_TOKEN }}
           github-token: ${{ secrets.PAT }}
           model: ${{ env.model }}
@@ -117,7 +136,7 @@ jobs:
           bili-proxy: ${{ secrets.BILI_STREAM_PROXY }}
           exec-even-exist: ${{ env.exec-even-exist }}
           branch: ${{ env.branch }}
-          type: 'pr'
+          type: ${{ env.commit-type }}
           filepath-template: ${{ env.filepath-template }}
           markdown-template: ${{ env.markdown-template }}
           prompt-template: ${{ env.prompt-template }}

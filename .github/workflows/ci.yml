@@ -4,7 +4,7 @@ on:
     branches:
       - 'main'
 env:
-  bvid: BV1BpXjY2EP2
+  bvid: BV1PudqYZE8r
 jobs:
   get-video:
     runs-on: ubuntu-latest
@@ -26,3 +26,4 @@ jobs:
           echo "commit-message: ${{steps.template-loader.outputs.commit-message-template}}"
           echo "prompt: ${{steps.template-loader.outputs.prompt-template}}"
           echo "system-prompt: ${{steps.template-loader.outputs.system-prompt-template }}"
+          echo "schema: ${{steps.template-loader.outputs.schema-template }}"

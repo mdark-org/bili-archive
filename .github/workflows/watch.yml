@@ -20,6 +20,7 @@ jobs:
           echo 'Watch result: ${{ steps.watch.outputs.result }}'
   fetch:
     needs: watch
+    if: ${{ fromJSON(needs.watch.outputs.result)[0] != null }}
     strategy:
       max-parallel: 2
       fail-fast: false
@@ -34,5 +35,7 @@ jobs:
       markdown-template: ${{ matrix.event.presetMarkdownTemplate }}
       prompt-template: ${{ matrix.event.presetPromptTemplate }}
       system-prompt-template: ${{ matrix.event.presetSystemPromptTemplate }}
-      model: 'gemini-2.5-pro-exp-03-25'
+      model: 'gemini-2.5-flash-preview-04-17'
+      maxOutputTokens: '65536'
+      commit-type: 'pr'
       branch: 'fetch/${{ matrix.event.bvid }}'
