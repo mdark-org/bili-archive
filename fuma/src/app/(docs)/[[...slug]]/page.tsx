@@ -57,7 +57,7 @@ export default async function Page(props: {
 
 export async function generateStaticParams() {
   const res = await source.generateParams();
-  return [res, {
+  return [...res, {
     slug: []
   }]
 }
