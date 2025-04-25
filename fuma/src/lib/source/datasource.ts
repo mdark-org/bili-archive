@@ -24,7 +24,7 @@ export class DataSource {
     })
 
     return Array.from(slugs.map(it => ({
-      slugs: it
+      slug: it
     })))
   }
 
