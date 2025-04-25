@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build:prebuild": "esbuild --bundle --outfile=dist/bundle.js  --platform=node ./prebuild/index.ts",
-    "build": "pnpm run build:prebuild && node dist/bundle.js && next build",
+    "build": "pnpm run build:prebuild && node dist/bundle.js",
+    "build:next": "next build",
     "dev": "next dev",
     "start": "next start",
     "db:gen": "pnpm drizzle-kit generate",

@@ -35,5 +35,4 @@ batch.yml
 .github/workflows/batch.yml
 .env
 actions/dist
-.doc-source
 dist

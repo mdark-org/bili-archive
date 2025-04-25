@@ -12,7 +12,7 @@ import Video from '@/app/(docs)/[[...slug]]/video'
 import { Comments } from '@/comment/comment'
 import { config } from '../../../../config'
 import { compileMDX } from '@fumadocs/mdx-remote';
-
+export const dynamic = 'force-static'
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
@@ -56,7 +56,9 @@ export default async function Page(props: {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  const res = await source.generateParams();
+  console.log("res", res)
+  return res
 }
 
 export async function generateMetadata(props: {
