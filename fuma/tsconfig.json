@@ -17,7 +17,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"],
-      "@doc-source": ["./.source/generated"]
+//      "@doc-source": ["./.source/generated"]
     },
     "plugins": [
       {

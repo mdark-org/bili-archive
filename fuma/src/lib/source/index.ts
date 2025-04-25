@@ -1,4 +1,4 @@
-import {sources} from "@doc-source";
+import {sources} from ".source/generated";
 import {Root} from "@/lib/source/shared";
 import {DataSource} from "@/lib/source/datasource";
 import {icons} from "lucide-react";
