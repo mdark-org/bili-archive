@@ -57,8 +57,9 @@ export default async function Page(props: {
 
 export async function generateStaticParams() {
   const res = await source.generateParams();
-  console.log("res", res)
-  return res
+  return [res, {
+    slug: []
+  }]
 }
 
 export async function generateMetadata(props: {
@@ -70,6 +71,8 @@ export async function generateMetadata(props: {
   if(slugs == undefined || slugs.length == 0) {
     // @ts-ignore
     page = (await source.getPages())?.[0]
+    console.log('finding page', page)
+    return redirect(encodeURI(page!.url));
   }
   if (!page) notFound();
 
