@@ -1,7 +1,7 @@
 
 import {Folder, Page, Root, Node} from "@/lib/source/shared";
 import {Feed, FeedOptions} from "feed";
-import {config} from "../../../config";
+// import {config} from "../../../config";
 import {compileMarkdown} from "@content-collections/markdown";
 
 
@@ -41,18 +41,18 @@ export class DataSource {
       title: `${this.pageTree.title} | RSS Feed`,
       description: this.pageTree.description,
       id: this.pageTree.name ??  site,
-      link: config.feed?.link ?? site,
-      language: config.feed?.language ?? "zh-CN",
-      image: config.feed?.image ?? `${site}${this.pageTree.icon}`,
-      favicon: config.feed?.favicon ?? `${site}/favicon.ico`,
-      copyright: config.feed?.copyright ?? 'Auto2Doc',
+      link: site,
+      language: "zh-CN",
+      image: `${site}${this.pageTree.icon}`,
+      favicon: `${site}/favicon.ico`,
+      copyright: 'Auto2Doc',
       ...feedOption,
     };
     const feed = new Feed(feedOptions);
     return feed;
   }
 
-  async collectRssItem() {
+  async collectRssItem(baseUrl: string) {
     const pages = await this.getPages()
     const rssPages = pages.filter(it => it.type === 'page' && !it.external)
       .filter(it => it && it.data?.rss !== false && !it.external)
@@ -74,15 +74,15 @@ export class DataSource {
       date: new Date(p!.data!.date! * 1000),
       title: p!.data!.title,
       description: p!.data!.description ?? "",
-      link: `${config.baseUrl}${p!.url}`,
+      link: `${baseUrl}${p!.url}`,
       content: await compilePage(p),
     }))
     return Promise.all(res)
   }
 
-  async buildRSS(feed?: Feed) {
+  async buildRSS(baseUrl: string, feed?: Feed) {
     let f = feed ?? this.generateFeed()
-    const rssItems = await this.collectRssItem()
+    const rssItems = await this.collectRssItem(baseUrl)
     rssItems.forEach(it => f.addItem(it))
     return f
   }

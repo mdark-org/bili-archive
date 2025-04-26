@@ -60,13 +60,13 @@ export const buildSource = () => {
       if(category) {
         const datasource = datasources.find(it => it.pageTree.url === `/${category}`)
         if(datasource) {
-          return datasource.buildRSS()
+          return datasource.buildRSS(config.baseUrl)
         }
         return null
       }
 
       const feed = generateRssFeed('')
-      const rssItems =await Promise.all(datasources.map(it => it.collectRssItem()))
+      const rssItems =await Promise.all(datasources.map(it => it.collectRssItem(config.baseUrl)))
         .then(res => res.flat())
         rssItems.sort((a,b) => dateComparator(a.date,b.date))
       rssItems.forEach(it => feed.addItem(it))

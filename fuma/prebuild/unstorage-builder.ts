@@ -3,7 +3,6 @@ import {createStorage, Storage} from "unstorage";
 import githubDriver from "unstorage/drivers/github";
 import micromatch from "micromatch";
 import matter from "gray-matter";
-import {DataSource} from "../src/lib/source/datasource";
 
 
 type VFilePath = {
@@ -196,7 +195,10 @@ export class UnStorageSourceBuilder {
     await this.buildFolderTree(folderMap)
     console.log("start fulfill folder tree")
     const pageMap = await this.fulfillFolders(folderMap)
-    return new DataSource(this.root, pageMap)
+    return {
+      pageTree: this.root,
+      pageMap
+    }
   }
 }
 
