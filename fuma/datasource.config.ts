@@ -35,7 +35,7 @@ const datasources: Datasource[] = [
     config: {
       includes: ['*.md', '*.mdx'],
       driver: 'github',
-      repo: "ktkongtong/btnews",
+      repo: "mdark-org/btnews",
       branch: "master",
       dir: "/docs/btnews/refnews",
       token: process.env.GITHUB_TOKEN,
@@ -67,7 +67,7 @@ const datasources: Datasource[] = [
     config: {
       includes: ['*.md', '*.mdx'],
       driver: 'github',
-      repo: "ktkongtong/bili-archive",
+      repo: "mdark-org/bili-koala-oss",
       branch: "main",
       dir: "/docs/Koala聊开源",
       token: process.env.GITHUB_TOKEN,
