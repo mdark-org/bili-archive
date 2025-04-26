@@ -49,7 +49,12 @@ export const buildSource = () => {
       return page
     },
     getPages: async () => {
-      return datasources.flatMap(it => it.getPages())
+      const res =  await Promise.all(datasources.flatMap(it => it.getPages()))
+      return res.flat()
+    },
+    getContentPages: async () => {
+      const res =  await Promise.all(datasources.flatMap(it => it.getPages()))
+      return res.flat().filter(it => it && !it.external)
     },
     generateParams: async () => {
       const pages = await Promise.all(datasources.flatMap(it => it.generateStaticParams()))
