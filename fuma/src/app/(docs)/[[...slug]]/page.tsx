@@ -71,7 +71,6 @@ export async function generateMetadata(props: {
   if(slugs == undefined || slugs.length == 0) {
     // @ts-ignore
     page = (await source.getPages())?.[0]
-    console.log('finding page', page)
     return redirect(encodeURI(page!.url));
   }
   if (!page) notFound();

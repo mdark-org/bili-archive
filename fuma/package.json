@@ -11,7 +11,9 @@
     "db:gen": "pnpm drizzle-kit generate",
     "db:mi": "pnpm drizzle-kit migrate"
   },
+
   "dependencies": {
+    "@oramacloud/client": "2.1.4",
     "@content-collections/core": "^0.8.2",
     "@content-collections/markdown": "^0.1.4",
     "@content-collections/mdx": "^0.2.2",

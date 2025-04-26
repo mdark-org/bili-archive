@@ -29,7 +29,7 @@ const datasources: Datasource[] = [
     mountedPath: '/refnews',
     category: [],
     name: '参考信息',
-    icon: "/image/btnews.png",
+    icon: "/image/refnews.png",
     description: "资讯连连看，消灭信息差",
     provider: 'unstorage',
     config: {
@@ -48,7 +48,7 @@ const datasources: Datasource[] = [
             title: 'RSS',
             name: 'RSS',
             external: true,
-            url: 'https://bili-archive.vercel.app/rss/refnews.xml',
+            url: 'https://bili-archive.vercel.app/rss/refnews',
             children: []
           })
         }
@@ -80,7 +80,7 @@ const datasources: Datasource[] = [
             title: 'RSS',
             name: 'RSS',
             external: true,
-            url: 'https://bili-archive.vercel.app/rss/koala.xml',
+            url: 'https://bili-archive.vercel.app/rss/koala-oss',
             children: []
           })
         }

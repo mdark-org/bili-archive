@@ -48,7 +48,7 @@ const datasources: Datasource[] = [
             title: 'RSS',
             name: 'RSS',
             external: true,
-            url: 'https://bili-archive.vercel.app/rss/refnews.xml',
+            url: 'https://bili-archive.vercel.app/rss/refnews',
             children: []
           })
         }
@@ -89,24 +89,3 @@ const datasources: Datasource[] = [
     }
   }
 ]
-
-type Transformers = {
-  folder: (node: Node) => Node | void
-  page: (node: Node) => Node | void
-  // beforeFolder
-}
-// folder transformer
-// before folder tree
-// after folder tree
-// before page
-// after page
-
-
-type Source = {
-  pageTree: Root,
-  getPageBySlug: (slugs?: string[] | undefined) => Promise<Page | null>,
-  generateStaticParams:() => Promise<{
-    slugs: string[]
-  }[]>
-}
-
