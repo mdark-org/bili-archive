@@ -17,6 +17,8 @@ export async function GET(): Promise<Response> {
         tag: page.url.split('/')?.[1],
         url: page.url,
         title: page.data!.title,
+        // @ts-ignore
+        page_id: page.url,
         description: page.data!.description,
       } satisfies OramaDocument;
     }),
