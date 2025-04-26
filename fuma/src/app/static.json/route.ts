@@ -14,7 +14,7 @@ export async function GET(): Promise<Response> {
       return {
         id: page.url,
         structured: structuredData,
-        tag: page.slugs[0],
+        tag: page.url.split('/')?.[1],
         url: page.url,
         title: page.data!.title,
         description: page.data!.description,
