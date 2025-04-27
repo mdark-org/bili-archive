@@ -24,7 +24,7 @@ export default async function Page(props: {
     return redirect(encodeURI(page!.url));
   }
   const compiled = await compileMDX({
-    source: page!.data!.content,
+    source: page!.data!.content ?? '',
   });
   const MdxContent = compiled.body;
   if (!page) notFound();
