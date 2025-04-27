@@ -1,4 +1,4 @@
-import {Datasource, Folder, metaSchema, Page, Root} from "../src/lib/source/shared";
+import {Datasource, Folder, metaSchema, Page, Root, Transformers} from "../src/lib/source/shared";
 import {createStorage, Storage} from "unstorage";
 import githubDriver from "unstorage/drivers/github";
 import micromatch from "micromatch";
@@ -15,11 +15,6 @@ type VFilePath = {
   key: string
 }
 
-type Transformers = Partial<{
-  root: (node: Root) => Root | void
-  folder: (node: Folder) => Folder | void
-  page: (node: Page) => Page | void
-}>
 export class UnStorageSourceBuilder {
   private storage: Storage
   private root: Root
@@ -50,7 +45,7 @@ export class UnStorageSourceBuilder {
       children: [],
       $source: restSource,
     }
-    this.root = this.applyTransformer(node)
+    this.root = this.applyFolderTransformer(node, 'before-build-tree')
     this.basePath = source.mountedPath
   }
 
@@ -89,22 +84,34 @@ export class UnStorageSourceBuilder {
   }
 
   private async getVFile(vfile: VFilePath) {
-
-    // vfile/cache
-
     const item = await this.storage.getItem(vfile.key)
     return item as string
   }
 
-
-  applyTransformer<T extends Folder | Page | Root>(node: T) : T {
-    if(node.type == 'folder' && node.root) {
-      return (this.transformers?.root?.(node) ?? node) as T
+  applyFolderTransformer<T extends Folder | Root>(node: T, type: 'before-build-tree' | 'after-build-tree') {
+    if(node.type != 'folder') throw new Error("Node type should be folder")
+    let transformers = this.transformers?.folder ?? []
+    if(node.root) {
+      transformers = this.transformers?.root ?? []
     }
-    switch (node.type) {
-      case 'folder': return (this.transformers?.folder?.(node) ?? node)  as T
-      case 'page': return (this.transformers?.page?.(node) ?? node) as T
+    let cur = node
+    for (const transform of transformers) {
+      if(type == 'after-build-tree') {
+        cur = transform.afterBuildTree?.(cur) ?? cur
+      }
+      if(type === 'before-build-tree') {
+        cur = transform.beforeBuildTree?.(cur) ?? cur
+      }
     }
+    return cur
+  }
+  applyPageTransformer<T extends Page>(node: T) : T {
+    const transformers = this.transformers?.page ?? []
+    let cur = node
+    for (const transform of transformers) {
+      cur = transform?.(cur) ?? cur
+    }
+    return cur
   }
 
   async buildFolders() {
@@ -120,7 +127,7 @@ export class UnStorageSourceBuilder {
         depth: path.split('/').length - 1,
         $source: this.source,
       }
-      folderMap.set(path, this.applyTransformer(folder))
+      folderMap.set(path, this.applyFolderTransformer(folder, 'before-build-tree'))
     }
     return folderMap
   }
@@ -148,9 +155,10 @@ export class UnStorageSourceBuilder {
         console.log(`key:${vFilePath.key} has been skipped`)
         continue
       }
-      page = this.applyTransformer(page)
+      page = this.applyPageTransformer(page)
       const {content, ...rest} = page.data!
       let pageWithoutContent = { ...page, data: rest }
+      // @ts-ignore
       folder.children.push(pageWithoutContent)
       pageMap.set(page.url, page)
     }
@@ -195,6 +203,9 @@ export class UnStorageSourceBuilder {
     await this.buildFolderTree(folderMap)
     console.log("start fulfill folder tree")
     const pageMap = await this.fulfillFolders(folderMap)
+    folderMap.values().forEach(it => {
+      this.applyFolderTransformer(it, 'after-build-tree')
+    })
     return {
       pageTree: this.root,
       pageMap

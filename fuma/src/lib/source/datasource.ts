@@ -56,7 +56,7 @@ export class DataSource {
     const pages = await this.getPages()
     const rssPages = pages.filter(it => it.type === 'page' && !it.external)
       .filter(it => it && it.data?.rss !== false && !it.external)
-      .toSorted((a,b) => (b?.data?.date ?? 0) - (a?.data?.date ?? 0))
+      .toSorted((a,b) => (b?.data?.date?.getTime() ?? 0) - (a?.data?.date?.getTime() ?? 0))
     const compilePage =async (p: Page) => {
       return await compileMarkdown({cache: cacheFn}, {
         _meta: {
@@ -66,12 +66,12 @@ export class DataSource {
           path: '',
           extension: 'md'
         },
-        content: p!.data!.content
+        content: p!.data!.content ?? ''
       })
     }
     const res =rssPages.map(async (p) => ({
       id: p!.data!.bvid,
-      date: new Date(p!.data!.date! * 1000),
+      date: p!.data!.date ?? new Date(),
       title: p!.data!.title,
       description: p!.data!.description ?? "",
       link: `${baseUrl}${p!.url}`,

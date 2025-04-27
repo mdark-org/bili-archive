@@ -1,5 +1,5 @@
-import { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
-import { FeedOptions } from 'feed'
+import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
+import type { FeedOptions } from 'feed'
 import { Rss } from 'lucide-react'
 
 type Config = {
@@ -9,45 +9,40 @@ type Config = {
   github?: {
     owner: string
     repo: string
-    // default true
     editable?: boolean
     sha: string
   }
   feed?: Partial<FeedOptions>,
-  docBasePath: string
   baseUrl: string
   fuma: {
     baseLayout: BaseLayoutProps
   }
 }
+
 const baseUrl = process.env.BASE_URL as string
 
 export const config: Config = {
   enableComment: true,
-  title: 'Bili Archive',
-  description: 'Bili Archive',
-  docBasePath: 'docs',
-  github: { owner: 'ktkongtong', repo: 'bili-archive', sha: 'main' },
+  title: 'MDARK',
+  description: 'MDARK',
+  github: { owner: 'mdark-org', repo: 'bili-archive', sha: 'main' },
   baseUrl: baseUrl,
   feed: {
-    title: 'Bili Archive',
-    description: 'Bili Archive',
+    title: 'MDARK',
+    description: 'MDARK',
     id: baseUrl,
     link: baseUrl,
   } as FeedOptions,
   fuma: {
     baseLayout: {
       nav: {
-        title: <>Auto2Doc</>,
+        title: <>MDARK</>,
       },
       links: [
-        {
-          type: 'icon',
-          url: `${baseUrl}/rss`,
-          icon: <Rss />,
-          label: 'RSS'
-        }
+        { type: 'icon', url: `${baseUrl}/rss`, icon: <Rss />, label: 'RSS' }
       ]
     } as BaseLayoutProps,
   },
 }
+
+export * from './datasource'
