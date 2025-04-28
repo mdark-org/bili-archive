@@ -41,9 +41,6 @@ export const buildSource = () => {
   return {
     tree: base,
     getPageBySlug: async (slug: string[] | undefined) => {
-      if(!slug || slug.length == 0) {
-        return (await Promise.all(datasources.map(it => it.getPages()))).flat()?.[0]
-      }
       const pages = await Promise.all(datasources.map(it => it.getPageBySlug(slug)))
       const page = pages.find(it => it !== null)
       return page
@@ -52,6 +49,12 @@ export const buildSource = () => {
       const res =  await Promise.all(datasources.flatMap(it => it.getPages()))
       return res.flat()
     },
+
+    getFirstPage: async () => {
+      const res =  await Promise.all(datasources.flatMap(it => it.getFirstPages()))
+      return res[0]
+    },
+
     getContentPages: async () => {
       const res =  await Promise.all(datasources.flatMap(it => it.getPages()))
       return res.flat().filter(it => it && !it.external)

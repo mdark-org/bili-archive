@@ -35,6 +35,11 @@ export class DataSource {
     return Array.from(this.pageMap.values())
   }
 
+  async getFirstPages() {
+    const pages = Array.from(this.pageMap.values())
+    return pages.sort((a,b) => (b.data?.date?.getTime() ?? 0) - (a.data?.date?.getTime() ?? 0))[0]
+  }
+
   private generateFeed(feedOption?: Partial<FeedOptions> & {baseUrl: string}) {
     const site = feedOption?.baseUrl!
     const feedOptions = {
@@ -83,7 +88,7 @@ export class DataSource {
   async buildRSS(baseUrl: string, feed?: Feed) {
     let f = feed ?? this.generateFeed()
     const rssItems = await this.collectRssItem(baseUrl)
-    rssItems.forEach(it => f.addItem(it))
+    rssItems.slice(0, 100).forEach(it => f.addItem(it))
     return f
   }
 }

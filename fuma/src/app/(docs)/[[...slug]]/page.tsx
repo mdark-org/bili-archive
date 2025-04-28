@@ -20,7 +20,7 @@ export default async function Page(props: {
   const slugs = params.slug?.map(it => decodeURIComponent(it));
   let page = await source.getPageBySlug(slugs ?? [])
   if(slugs == undefined || slugs.length == 0) {
-
+    page = await source.getFirstPage()
     return redirect(encodeURI(page!.url));
   }
   console.log(`compiling: ${page?.name}`)
@@ -74,7 +74,7 @@ export async function generateMetadata(props: {
   let page = await source.getPageBySlug(slugs);
   if(slugs == undefined || slugs.length == 0) {
     // @ts-ignore
-    page = (await source.getPages())?.[0]
+    page = await source.getFirstPage()
     return redirect(encodeURI(page!.url));
   }
   if (!page) notFound();
