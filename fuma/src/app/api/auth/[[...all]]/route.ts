@@ -1,4 +1,12 @@
 import { auth } from "@/lib/auth";
-import { toNextJsHandler } from "better-auth/next-js";
+import { Hono } from "hono";
+import { handle } from "hono/vercel";
 
-export const { POST, GET } = toNextJsHandler(auth);
+const app = new Hono();
+
+app.on(["POST", "GET"], "/api/auth/*", (c) => {
+  return auth.handler(c.req.raw);
+});
+
+export const GET = handle(app);
+export const POST = handle(app);
