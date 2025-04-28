@@ -26,6 +26,6 @@ jobs:
           mkdir -p .vercel
           echo '{"projectId":"${{ env.VERCEL_PROJECT_ID }}","orgId":"${{ env.VERCEL_ORG_ID }}"}' > .vercel/project.json
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel pull --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy to Vercel
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
