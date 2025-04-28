@@ -18,7 +18,7 @@ export default defineConfig((options) => {
     // types
     {
       ...commonOptions,
-      outDir: './dist/types/builder',
+      outDir: './dist/builder/types',
       format: ['esm'],
       dts: {
         only: true,
@@ -33,14 +33,14 @@ export default defineConfig((options) => {
     {
       ...commonOptions,
       format: ['esm'],
-      outDir: './dist/esm/builder',
+      outDir: './dist/builder/esm',
       sourcemap: false,
       dts: false
     },
     {
       ...commonOptions,
       format: ['cjs'],
-      outDir: './dist/cjs/builder',
+      outDir: './dist/builder/cjs',
     },
   ]
 })

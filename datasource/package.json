@@ -19,9 +19,9 @@
       "require": "./dist/cjs/source.js"
     },
     "./build": {
-      "types": "./dist/types/builder/index.d.mts",
-      "import": "./dist/esm/builder/index.mjs",
-      "require": "./dist/cjs/source.js"
+      "types": "./dist/builder/types/index.d.mts",
+      "import": "./dist/builder/esm/index.mjs",
+      "require": "./dist/builder/cjs/source.js"
     }
   },
   "dependencies": {
