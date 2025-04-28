@@ -65,7 +65,7 @@ const datasources: Datasource[] = [
   {
     id: 'btnews.opinion',
     name: '高见',
-    description: "热河省蛮子，刘亦菲粉丝",
+    description: "技术解构旧世界，技术建构新世界",
     mountedPath: '/opinion',
     category: [],
     icon: "/image/opinion.png",
