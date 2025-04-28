@@ -1,7 +1,8 @@
 import { HTMLProps } from "react"
 
 type VideoProps = {
-  bvid: string,
+  bvid?: string,
+  ytid?: string
   iframeClassname?: string
 }
 export default function Video({bvid, iframeClassname, ...rest}:VideoProps & HTMLProps<HTMLDivElement>) {
@@ -12,5 +13,4 @@ export default function Video({bvid, iframeClassname, ...rest}:VideoProps & HTML
       src={`https://player.bilibili.com/player.html?bvid=${bvid}&high_quality=1&autoplay=false`}
       frameBorder="no" scrolling="no" allowFullScreen={true} />
   </div>
-
 }

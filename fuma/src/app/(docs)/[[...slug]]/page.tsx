@@ -26,7 +26,7 @@ export default async function Page(props: {
   const compiled = await compileMDX({
     source: page!.data!.content ?? '',
     mdxOptions: {
-      remarkImageOptions: {useImport: false, external: false},
+      remarkImageOptions: false,
     }
   });
   const MdxContent = compiled.body;

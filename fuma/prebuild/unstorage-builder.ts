@@ -147,17 +147,30 @@ export class UnStorageSourceBuilder {
   async fulfillFolders(folderMap: Map<string, Folder>) {
     const pageMap = new Map<string, Page>
     const {filePaths} = await this.getFiles()
-    for (const vFilePath of filePaths) {
+
+    const handlerVFilePath = async (vFilePath: typeof filePaths[number]) => {
       console.log("loading", vFilePath)
-      const folder = folderMap.get(vFilePath.path)!
       let page = await this.VFileToPage(<VFilePath>vFilePath, this.root)
       if(!page) {
         console.log(`key:${vFilePath.key} has been skipped`)
-        continue
+        return null
       }
       page = this.applyPageTransformer(page)
       const {content, ...rest} = page.data!
       let pageWithoutContent = { ...page, data: rest }
+
+      return {
+        page,
+        pageWithoutContent,
+        vFilePath
+      }
+    }
+
+    const res = await Promise.all(filePaths.map(it => handlerVFilePath(it)))
+    for (const item of res) {
+      if(!item) continue
+      const { page, pageWithoutContent, vFilePath } = item
+      const folder = folderMap.get(vFilePath.path)!
       // @ts-ignore
       folder.children.push(pageWithoutContent)
       pageMap.set(page.url, page)
