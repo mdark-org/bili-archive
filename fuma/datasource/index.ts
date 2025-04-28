@@ -13,10 +13,10 @@ const ctx = {
 }
 
 const datasources = [
-  // refnewsDs(ctx),
-  // btnewsDs(ctx),
-  // opinionDs(ctx),
-  // slangDs(ctx),
+  refnewsDs(ctx),
+  btnewsDs(ctx),
+  opinionDs(ctx),
+  slangDs(ctx),
   koalaOssDs(ctx)
 ] as Datasource[]
 

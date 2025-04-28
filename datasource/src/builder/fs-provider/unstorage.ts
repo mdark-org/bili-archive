@@ -3,6 +3,10 @@ import micromatch from "micromatch";
 import { Datasource, VFilePath } from "../../shared";
 import { FSProvider } from "./index";
 
+import pLimit from "p-limit";
+
+const limit = pLimit(200);
+
 export class UnStorageSourceBuilder implements FSProvider {
   private readonly basePath: string
   constructor( private source: Datasource, private readonly storage: Storage) {
@@ -42,7 +46,7 @@ export class UnStorageSourceBuilder implements FSProvider {
   }
 
   async getVFileContent(vfile: VFilePath) {
-      const item = await this.storage.getItem(vfile.key)
+      const item = await limit(() => this.storage.getItem(vfile.key))
       return item as string
   }
 
