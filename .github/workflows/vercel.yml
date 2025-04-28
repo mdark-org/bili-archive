@@ -20,7 +20,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: Install Vercel CLI
-        run: pnpm install --global vercel@latest && vercel link --yes --repo --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm install --global vercel@latest
+      - name: Create .vercel (link to project)
+        run: |
+          mkdir -p .vercel
+          echo '{"projectId":"${{ env.VERCEL_PROJECT_ID }}","orgId":"${{ env.VERCEL_ORG_ID }}"}' > .vercel/project.json
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy to Vercel
