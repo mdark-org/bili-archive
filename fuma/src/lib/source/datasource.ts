@@ -88,7 +88,7 @@ export class DataSource {
   async buildRSS(baseUrl: string, feed?: Feed) {
     let f = feed ?? this.generateFeed()
     const rssItems = await this.collectRssItem(baseUrl)
-    rssItems.slice(0, 100).forEach(it => f.addItem(it))
+    rssItems.slice(0, 30).forEach(it => f.addItem(it))
     return f
   }
 }
