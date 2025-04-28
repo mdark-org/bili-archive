@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:prebuild": "esbuild --bundle --outfile=dist/bundle.js  --platform=node ./scripts/build-source.ts  && node dist/bundle.js ",
+    "build:prebuild": "esbuild --bundle --outfile=dist/bundle.js --platform=node ./scripts/build-source.ts  && node dist/bundle.js ",
     "build": "pnpm run build:prebuild && pnpm run build:next",
     "build:next": "next build",
-    "dev": "next dev --turbopack",
+    "dev": "next dev ",
     "start": "next start",
     "db:gen": "pnpm drizzle-kit generate",
     "db:mi": "pnpm drizzle-kit migrate"

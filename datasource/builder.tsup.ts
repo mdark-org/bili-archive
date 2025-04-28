@@ -37,5 +37,10 @@ export default defineConfig((options) => {
       sourcemap: false,
       dts: false
     },
+    {
+      ...commonOptions,
+      format: ['cjs'],
+      outDir: './dist/cjs/builder',
+    },
   ]
 })

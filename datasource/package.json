@@ -20,7 +20,8 @@
     },
     "./build": {
       "types": "./dist/types/builder/index.d.mts",
-      "import": "./dist/esm/builder/index.mjs"
+      "import": "./dist/esm/builder/index.mjs",
+      "require": "./dist/cjs/source.js"
     }
   },
   "dependencies": {
