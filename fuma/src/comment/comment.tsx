@@ -5,7 +5,7 @@ import { authClient } from '@/lib/auth-client'
 
 const signIn = () => {
   void authClient.signIn.social({
-    provider: "github",
+    provider: 'google',
   });
 };
 const comment = createUploadThingStorage();
