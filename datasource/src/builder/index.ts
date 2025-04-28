@@ -1,11 +1,11 @@
-import {Datasource, Folder, Node, Page, Root} from "../src/lib/source/shared";
-import {UnStorageSourceBuilder} from "./unstorage-builder";
+
 import serialize from "serialize-javascript";
 import * as fs from "node:fs";
-
+import {Datasource} from "../shared";
+import {SourceBuilder} from "./builder";
 export const build = async (datasources: Datasource[]) => {
   const sources = []
-  const res = await Promise.all(datasources.map(it => new UnStorageSourceBuilder(it).build()))
+  const res = await Promise.all(datasources.map(it => new SourceBuilder(it).build()))
   for ( const source of res) {
     sources.push(source)
   }

@@ -1,0 +1,47 @@
+{
+  "name": "@repo/datasource",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run build:common && pnpm run build:builder",
+    "build:builder": "tsup --config builder.tsup.ts",
+    "build:common": "tsup"
+  },
+  "exports": {
+    "./shared": {
+      "types": "./dist/types/shared/index.d.mts",
+      "import": "./dist/esm/shared/index.mjs",
+      "require": "./dist/cjs/shared/index.js"
+    },
+    "./source": {
+      "types": "./dist/types/source.d.mts",
+      "import": "./dist/esm/source.mjs",
+      "require": "./dist/cjs/source.js"
+    },
+    "./build": {
+      "types": "./dist/types/builder/index.d.mts",
+      "import": "./dist/esm/builder/index.mjs"
+    }
+  },
+  "dependencies": {
+    "zod": "^3.24.3",
+    "@content-collections/markdown": "^0.1.4"
+
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "micromatch": "^4.0.8",
+    "feed": "^4.2.2",
+    "unstorage": "1.15.0",
+    "p-limit": "^6.2.0",
+    "tsup": "^8.4.0",
+    "serialize-javascript": "^6.0.2",
+    "@types/serialize-javascript": "^5.0.4",
+    "@types/micromatch": "^4.0.9",
+    "@types/node": "22.13.10",
+    "eslint": "^8",
+    "eslint-config-next": "15.2.2",
+    "any-date-parser": "^2.1.0",
+    "typescript": "^5.8.2"
+  }
+}

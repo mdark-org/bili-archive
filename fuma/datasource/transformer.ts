@@ -1,4 +1,4 @@
-import {Folder, FolderTransformer, Root, RootTransformer} from "@/lib/source/shared";
+import type { FolderTransformer, RootTransformer } from "@repo/datasource/shared";
 
 export const indexFolderTransformer: FolderTransformer = {
   beforeBuildTree: (folder) => {

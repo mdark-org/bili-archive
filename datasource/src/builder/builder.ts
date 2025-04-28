@@ -1,91 +1,34 @@
-import {Datasource, Folder, metaSchema, Page, Root, Transformers} from "../src/lib/source/shared";
-import {createStorage, Storage} from "unstorage";
-import githubDriver from "unstorage/drivers/github";
-import micromatch from "micromatch";
 import matter from "gray-matter";
+import {Datasource, Transformers, Page, Root, Folder, metaSchema } from "../shared";
+import {VFilePath} from "../shared";
+import {createFSProvider, FSProvider} from "./fs-provider";
 
 
-type VFilePath = {
-  path: string
-  sourcePath: string,
-  url: string
-  filename: string
-  ext: string
-  fullName: string
-  key: string
-}
-
-export class UnStorageSourceBuilder {
-  private storage: Storage
+export class SourceBuilder {
   private root: Root
-  private basePath: string
   private transformers?: Transformers
   private source : Omit<Datasource, 'transformer'>
+  private fsProvider: FSProvider
   constructor(source: Datasource) {
+    this.fsProvider = createFSProvider(source)
     let { transformers, ...restSource} = source
     this.source = restSource
     this.transformers = transformers
-    this.storage = createStorage({
-      driver: githubDriver({
-        repo: this.source.config.repo,
-        branch: this.source.config.branch,
-        dir: this.source.config.dir,
-        token: this.source.config.token
-      }),
-    });
+    this.root = this.createRootNodeFromSource()
+  }
+  private createRootNodeFromSource() {
     let node: Root = {
-      title: source.name,
-      description: source.description,
-      icon: source.icon,
-      url: source.mountedPath,
-      name: source.name,
+      title: this.source.name,
+      description: this.source.description,
+      icon: this.source.icon,
+      url: this.source.mountedPath,
+      name: this.source.name,
       type: 'folder' as const,
       root: true,
-      depth: source.mountedPath.split('/').length - 1,
+      depth: this.source.mountedPath.split('/').length - 1,
       children: [],
-      $source: restSource,
     }
-    this.root = this.applyFolderTransformer(node, 'before-build-tree')
-    this.basePath = source.mountedPath
-  }
-
-
-  private unStorageKeyToPath(key: string) {
-    const segments = key.split(':')
-    const filename = segments.pop()
-    const path = [this.basePath, ...segments].join('/')
-    const lastidx = filename?.lastIndexOf('.')
-    const ext = lastidx ? filename?.slice(lastidx) : ''
-    const filenameWithoutExt = lastidx ? filename?.slice(0, lastidx) : filename
-    return {
-      filename: filenameWithoutExt,
-      fullName: filename,
-      ext,
-      path,
-      sourcePath: segments.join('/'),
-      url: path.concat(`/${filenameWithoutExt}`),
-      key
-    }
-  }
-
-  async getFiles() {
-    let keys = await this.storage.getKeys('')
-    const includes = (this.source.config.includes) as string[]
-    if(includes) keys = micromatch(keys, includes)
-    const vFilePaths = keys.map(key => this.unStorageKeyToPath(key))
-    const paths = keys.flatMap(it => it.split(':').slice(0, -1)
-      .reduce((acc, cur) => ({pre: acc.pre + '/' + cur, arr: [...acc.arr, acc.pre + '/' + cur]}), {pre: '', arr: [] as string[]}).arr
-    )
-      .map(it => this.basePath + it)
-    return {
-      filePaths: vFilePaths,
-      folderPaths: paths,
-    }
-  }
-
-  private async getVFile(vfile: VFilePath) {
-    const item = await this.storage.getItem(vfile.key)
-    return item as string
+    return this.applyFolderTransformer(node, 'before-build-tree')
   }
 
   applyFolderTransformer<T extends Folder | Root>(node: T, type: 'before-build-tree' | 'after-build-tree') {
@@ -115,7 +58,7 @@ export class UnStorageSourceBuilder {
   }
 
   async buildFolders() {
-    const {folderPaths} = await this.getFiles()
+    const {folderPaths} = await this.fsProvider.getFiles()
     const folderMap = new Map<string,Folder>()
     for (const path of folderPaths) {
       const folder = {
@@ -125,7 +68,6 @@ export class UnStorageSourceBuilder {
         children: [],
         type: 'folder' as const,
         depth: path.split('/').length - 1,
-        $source: this.source,
       }
       folderMap.set(path, this.applyFolderTransformer(folder, 'before-build-tree'))
     }
@@ -146,9 +88,14 @@ export class UnStorageSourceBuilder {
 
   async fulfillFolders(folderMap: Map<string, Folder>) {
     const pageMap = new Map<string, Page>
-    const {filePaths} = await this.getFiles()
+    const {filePaths} = await this.fsProvider.getFiles()
     const handlerVFilePath = async (vFilePath: typeof filePaths[number]) => {
-      let page = await this.VFileToPage(<VFilePath>vFilePath, this.root)
+      let page
+      try {
+        page = await this.VFileToPage(<VFilePath>vFilePath, this.root)
+      }catch (e: any) {
+        console.log(`failed to generate page for ${vFilePath.key}, ${e?.message}`)
+      }
       if(!page) {
         return {vFilePath}
       }
@@ -167,7 +114,6 @@ export class UnStorageSourceBuilder {
     for (const item of res) {
       const { page, pageWithoutContent, vFilePath } = item
       if(!page) {
-        console.warn(`${vFilePath.key} has been skipped due to parse issue`)
         continue
       }
       const folder = folderMap.get(vFilePath.path)!
@@ -178,14 +124,16 @@ export class UnStorageSourceBuilder {
     return pageMap
   }
 
-
   private async VFileToPage(vFileMeta: VFilePath, root: Root): Promise<Page | null> {
-    const item = await this.getVFile(vFileMeta)
+    const item = await this.fsProvider.getVFileContent(vFileMeta)
     const frontmatter = matter(item as string)
-    const parsed = metaSchema.safeParse(frontmatter.data)
-    if(!parsed.success) return null
-    const {data} = parsed
-    const [owner, repo] = this.source.config.repo.split('/')
+    const data = metaSchema.parse(frontmatter.data)
+    // if(!parsed.success) {
+    //   console.log(parsed.error.message)
+    //   return null
+    // }
+    // const {data} = parsed
+    const [owner, repo] = (this.source.github?.repo ?? '/').split('/')
     return {
       url: vFileMeta.url,
       name: data.title ?? vFileMeta.filename!,
@@ -193,17 +141,13 @@ export class UnStorageSourceBuilder {
       type: 'page' as const,
       filename: vFileMeta.filename,
       ext: vFileMeta.ext,
-      $source: this.source,
-      data: {
-        ...data,
-        content: frontmatter.content
-      },
-      github: {
+      data: { ...data, content: frontmatter.content },
+      github: this.source.github ? {
         owner: owner,
         repo: repo,
-        sha: this.source.config.branch,
-        path: this.source.config.dir.concat(`/${vFileMeta.sourcePath}/${vFileMeta.fullName}`)
-      }
+        sha: this.source.github.branch,
+        path: this.source.github.dir.concat(`/${vFileMeta.sourcePath}/${vFileMeta.fullName}`)
+      } : undefined
     }
   }
 
@@ -219,10 +163,12 @@ export class UnStorageSourceBuilder {
     folderMap.values().forEach(it => {
       this.applyFolderTransformer(it, 'after-build-tree')
     })
+    console.log(`build finished: ${this.root.name}`)
     return {
       pageTree: this.root,
       pageMap
     }
   }
-}
 
+
+}

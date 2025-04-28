@@ -1,6 +1,6 @@
 import {sources} from ".source/generated";
-import {Root} from "@/lib/source/shared";
-import {DataSource} from "@/lib/source/datasource";
+import {DataSource} from "@repo/datasource/source";
+import { Root } from "@repo/datasource/shared";
 import {icons} from "lucide-react";
 import {createElement} from "react";
 import {Feed, FeedOptions} from "feed";

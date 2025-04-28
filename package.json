@@ -2,7 +2,7 @@
   "name": "auto-doc-template",
   "version": "1.0.0",
   "scripts": {
-
+    "build": "turbo build --filter=fuma"
   },
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
@@ -10,5 +10,8 @@
     "patchedDependencies": {
       "fumadocs-ui": "patches/fumadocs-ui.patch"
     }
+  },
+  "devDependencies": {
+    "turbo": "^2.5.2"
   }
 }

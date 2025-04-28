@@ -1,7 +1,5 @@
-
-import {Folder, Page, Root, Node} from "@/lib/source/shared";
+import { Page, Root } from "./shared";
 import {Feed, FeedOptions} from "feed";
-// import {config} from "../../../config";
 import {compileMarkdown} from "@content-collections/markdown";
 
 
