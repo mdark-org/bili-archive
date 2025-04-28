@@ -1,9 +1,22 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "BASE_URL",
+    "GITHUB_TOKEN"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "NEXT_PUBLIC_ORAMA_ENDPOINT",
+        "NEXT_PUBLIC_ORAMA_API_KEY",
+        "UPLOADTHING_TOKEN",
+        "BETTER_AUTH_SECRET",
+        "DATABASE_URL"
+      ]
     }
   }
 }
