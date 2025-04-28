@@ -42,6 +42,7 @@
     "uploadthing": "^7.5.2"
   },
   "devDependencies": {
+    "p-limit": "^6.2.0",
     "esbuild": "^0.25.3",
     "serialize-javascript": "^6.0.2",
     "@types/serialize-javascript": "^5.0.4",

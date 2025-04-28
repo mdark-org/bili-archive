@@ -5,8 +5,8 @@ import * as fs from "node:fs";
 
 export const build = async (datasources: Datasource[]) => {
   const sources = []
-  for ( const datasource of datasources) {
-    const source = await new UnStorageSourceBuilder(datasource).build()
+  const res = await Promise.all(datasources.map(it => new UnStorageSourceBuilder(it).build()))
+  for ( const source of res) {
     sources.push(source)
   }
   const pageMaps = serialize(sources, { space: 2, unsafe: true })
