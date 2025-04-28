@@ -3,6 +3,9 @@ const config = {
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  images: {
+    unoptimized: true
   }
 };
 
