@@ -23,6 +23,7 @@ export default async function Page(props: {
 
     return redirect(encodeURI(page!.url));
   }
+  console.log(`compiling: ${page?.name}`)
   const compiled = await compileMDX({
     source: page!.data!.content ?? '',
     mdxOptions: {
