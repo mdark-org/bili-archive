@@ -20,6 +20,7 @@ export default async function Page(props: {
   const slugs = params.slug?.map(it => decodeURIComponent(it));
   let page = await source.getPageBySlug(['docs',...slugs ?? []])
   if(slugs == undefined || slugs.length == 0) {
+
     page = await source.getFirstPage()
     return redirect(encodeURI(page!.url));
   }
@@ -61,9 +62,8 @@ export default async function Page(props: {
 
 export async function generateStaticParams() {
   const res = await source.generateParams();
-  return [...res, {
-    slug: []
-  }]
+  const slugs = res.map(it => ({slug: it.slug.slice(1)}))
+  return [...slugs, { slug: [] }]
 }
 
 export async function generateMetadata(props: {
@@ -71,7 +71,7 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const slugs = params.slug?.map(it => decodeURIComponent(it));
-  let page = await source.getPageBySlug(['docs',...slugs ?? []]);
+  let page = await source.getPageBySlug(['docs', ...slugs ?? []]);
   if(slugs == undefined || slugs.length == 0) {
     // @ts-ignore
     page = await source.getFirstPage()
