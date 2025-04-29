@@ -5,7 +5,7 @@ const refnews : DatasourceCreator<'github'>= (ctx: Context) => ({
   id: 'btnews.refnews',
   name: '参考信息',
   description: "资讯连连看，消灭信息差",
-  mountedPath: '/refnews',
+  mountedPath: '/docs/refnews',
   category: [],
   icon: "/image/refnews.png",
   provider: {

@@ -5,7 +5,7 @@ export default (ctx: Context) => ({
   id: 'btnews.slang',
   name: '讲点黑话',
   description: "讲点黑话",
-  mountedPath: '/slang',
+  mountedPath: '/docs/slang',
   category: [],
   icon: "/image/slang.png",
   provider: {

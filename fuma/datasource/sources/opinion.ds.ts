@@ -5,7 +5,7 @@ export default (ctx: Context) => ({
     id: 'btnews.opinion',
     name: '高见',
     description: "技术解构旧世界，技术建构新世界",
-    mountedPath: '/opinion',
+    mountedPath: '/docs/opinion',
     category: [],
     icon: "/image/opinion.png",
     provider: {

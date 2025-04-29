@@ -3,7 +3,7 @@ import {addRSSPage, dateFolderTransformer} from "../transformer";
 
 export default (ctx: Context) => ({
   id: 'archive.koala-oss',
-  mountedPath: '/koala-oss',
+  mountedPath: '/docs/koala-oss',
   category: [],
   name: 'Koala聊开源',
   icon: "/image/koala.png",

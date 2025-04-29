@@ -6,7 +6,7 @@ export default (ctx: Context) => ({
   id: 'btnews.btnews',
   name: '睡前消息',
   description: "热河省蛮子，刘亦菲粉丝",
-  mountedPath: '/btnews',
+  mountedPath: '/docs/btnews',
   category: [],
   icon: "/image/btnews.png",
   provider: {
