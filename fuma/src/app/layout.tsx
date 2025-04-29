@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import "../global.css";
+import "./global.css";
 import { JetBrains_Mono } from 'next/font/google'
 import {Provider} from "@/components/provider";
 
