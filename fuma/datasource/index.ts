@@ -8,7 +8,7 @@ import {Datasource} from "@repo/datasource/shared";
 const ctx = {
   env: {
     GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-    baseUrl: process.env.BASE_URL
+    BASE_URL: process.env.BASE_URL
   }
 }
 
