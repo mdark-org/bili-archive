@@ -8,7 +8,7 @@ import {
 } from "fumadocs-ui/page";
 import { notFound, redirect } from 'next/navigation'
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import Video from '@/app/(docs)/[[...slug]]/video'
+import Video from '@/app/docs/[[...slug]]/video'
 import { Comments } from '@/comment/comment'
 import { config } from '../../../../config'
 import { compileMDX } from '@fumadocs/mdx-remote';
