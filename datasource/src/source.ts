@@ -55,11 +55,14 @@ export class DataSource {
     return feed;
   }
 
-  async collectRssItem(baseUrl: string) {
+  async collectRssItem(baseUrl: string, limit?: number) {
     const pages = await this.getPages()
-    const rssPages = pages.filter(it => it.type === 'page' && !it.external)
+    let rssPages = pages.filter(it => it.type === 'page' && !it.external)
       .filter(it => it && it.data?.rss !== false && !it.external)
       .toSorted((a,b) => (b?.data?.date?.getTime() ?? 0) - (a?.data?.date?.getTime() ?? 0))
+    if (limit) {
+      rssPages = rssPages.slice(0, limit)
+    }
     const compilePage =async (p: Page) => {
       return await compileMarkdown({cache: cacheFn}, {
         _meta: {
@@ -84,9 +87,11 @@ export class DataSource {
   }
 
   async buildRSS(baseUrl: string, feed?: Feed) {
-    let f = feed ?? this.generateFeed()
-    const rssItems = await this.collectRssItem(baseUrl)
-    rssItems.slice(0, 30).forEach(it => f.addItem(it))
+    let f = feed ?? this.generateFeed({
+      baseUrl
+    })
+    const rssItems = await this.collectRssItem(baseUrl, 30)
+    rssItems.forEach(it => f.addItem(it))
     return f
   }
 }
