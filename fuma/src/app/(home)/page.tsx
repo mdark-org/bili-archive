@@ -2,7 +2,6 @@
 import { buttonVariants } from '@/components/ui/button';
 import { config } from 'config';
 import Link from 'fumadocs-core/link';
-import RecentCollection from '@/components/recent-collection';
 import { source } from '@/lib/source';
 import PageItem from '@/components/page-item';
 
@@ -24,7 +23,7 @@ export default async function Page() {
           'repeating-linear-gradient(to bottom, transparent, color-mix(in oklab, var(--color-fd-primary) 1%, transparent) 500px, transparent 1000px)',
       }}
     >
-      <div className="relative my-2">
+      <div className="relative">
         <Hero />
       </div>
       <div
@@ -45,7 +44,7 @@ export default async function Page() {
 }
 function Hero() {
   return (
-    <div className="relative z-[2] flex flex-col border-x border-t bg-fd-background/80 px-4 pt-12 max-md:text-center md:px-12 md:pt-16 [.uwu_&]:hidden overflow-hidden">
+    <div className="relative z-[2] pb-4 flex flex-col border-x border-t bg-fd-background/80 px-4 pt-12 max-md:text-center md:px-12 md:pt-16 [.uwu_&]:hidden overflow-hidden">
       <div
         className="absolute inset-0 z-[-1] blur-2xl hidden dark:block"
         style={{
@@ -64,8 +63,7 @@ function Hero() {
             'repeating-linear-gradient(65deg, var(--color-purple-300), var(--color-purple-300) 12px, color-mix(in oklab, var(--color-blue-600) 30%, transparent) 20px, transparent 200px)',
         }}
       />
-      <h1 className="mb-8 text-4xl font-medium md:hidden">Build Your Docs</h1>
-      <h1 className="mb-8 max-w-[600px] text-4xl font-medium max-md:hidden">
+      <h1 className="mb-8 max-w-[600px] text-4xl font-medium">
         MDARK
       </h1>
       <p className="mb-8 text-fd-muted-foreground md:max-w-[80%] md:text-xl">
