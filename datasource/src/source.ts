@@ -46,8 +46,8 @@ export class DataSource {
       id: this.pageTree.name ??  site,
       link: site,
       language: "zh-CN",
-      image: `${site}${this.datasourceInfo.icon}`,
-      favicon: `${site}${this.datasourceInfo.icon ?? '/favicon.ico'}`,
+      image: `${site}${this.datasourceInfo?.icon}`,
+      favicon: `${site}${this.datasourceInfo?.icon ?? '/favicon.ico'}`,
       copyright: `All rights reserved ${new Date().getFullYear()}`,
       ...feedOption,
     };

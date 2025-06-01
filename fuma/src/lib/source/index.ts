@@ -33,7 +33,7 @@ export function generateRssFeed(category: string, feedOption?: Partial<FeedOptio
 export const buildSource = () => {
   const base = { name: 'root', children: [] as Root[] }
   // @ts-ignore
-  const datasources = sources.map(it => new DataSource(it.pageTree, it.pageMap))
+  const datasources = sources.map(it => new DataSource(it.pageTree, it.pageMap, it.datasourceInfo))
   datasources.forEach(it => {
     it.pageTree.icon = icon(it.pageTree.icon)
     base.children.push(it.pageTree)
