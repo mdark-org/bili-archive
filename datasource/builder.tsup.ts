@@ -36,11 +36,6 @@ export default defineConfig((options) => {
       outDir: './dist/builder/esm',
       sourcemap: false,
       dts: false
-    },
-    {
-      ...commonOptions,
-      format: ['cjs'],
-      outDir: './dist/builder/cjs',
-    },
+    }
   ]
 })

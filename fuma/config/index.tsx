@@ -6,10 +6,9 @@ type Config = {
   title: string,
   description: string,
   enableComment: boolean
-  github?: {
+  github: {
     owner: string
     repo: string
-    editable?: boolean
     sha: string
   }
   search: {
@@ -56,7 +55,7 @@ export const config: Config = {
         title: <>MDARK</>,
       },
       links: [
-        { type: 'icon', url: `${baseUrl}/rss`, icon: <Rss />, label: 'RSS' }
+        { type: 'icon', url: `${baseUrl}/rss`, icon: <Rss />, label: 'RSS' },
       ]
     } as BaseLayoutProps,
   },

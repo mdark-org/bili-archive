@@ -15,6 +15,9 @@ const docs = defineCollection({
       ...createDocSchema(z),
       date: z.coerce.number(),
       bvid: z.string().optional(),
+      ytid: z.string().optional(),
+      xgid: z.string().optional(),
+      wbid: z.string().optional(),
       rss: z.boolean().optional().default(true),
     }
   },

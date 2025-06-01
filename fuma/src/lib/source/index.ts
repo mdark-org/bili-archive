@@ -49,7 +49,25 @@ export const buildSource = () => {
       const res =  await Promise.all(datasources.flatMap(it => it.getPages()))
       return res.flat()
     },
-
+    getDatasourceAndLatestPages: async (count: number = 5) => {
+      const datasourceToRecentCollection = async (datasource: DataSource, count: number) => {
+        const all = await datasource.getPages()
+        const pages = all.sort((a,b) => dateComparator(b.data?.date,a.data?.date)).slice(0, count)
+        return {
+          name: datasource.pageTree.title,
+          url: datasource.pageTree.url,
+          icon: datasource.pageTree.icon,
+          description: datasource.pageTree.description,
+          latestPages: pages
+        }
+      }
+      return Promise.all(datasources.map(it => datasourceToRecentCollection(it, count)))
+    },
+    getRecentPages: async (count: number = 20) => {
+      const res = await Promise.all(datasources.flatMap(it => it.getPages()))
+      const pages = res.flat().sort((a,b) => dateComparator(b.data?.date,a.data?.date)).slice(0, count)
+      return pages
+    },
     getFirstPage: async () => {
       const res =  await Promise.all(datasources.flatMap(it => it.getFirstPages()))
       return res[0]
@@ -82,9 +100,9 @@ export const buildSource = () => {
     }
   }
 }
-
-const dateComparator = (a: Date, b: Date) => {
-  return a.getTime() - b.getTime()
+const zero = new Date(0)
+const dateComparator = (a?: Date, b?: Date) => {
+  return (a ?? zero).getTime() - (b?? zero).getTime()
 }
 
 export const source = buildSource()
