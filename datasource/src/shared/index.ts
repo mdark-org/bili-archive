@@ -23,6 +23,8 @@ type DatasourceInternal = {
   icon?: string,
 }
 
+export type DatasourceInfo = DatasourceInternal
+
 export type DatasourceCreator<Opt extends keyof BuiltinDriverOptions, T extends any[] = any[]> = (...param:T) => Datasource<Opt>
 
 export type Datasource<T extends keyof BuiltinDriverOptions | unknown = unknown> = {

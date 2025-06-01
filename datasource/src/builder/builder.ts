@@ -166,7 +166,17 @@ export class SourceBuilder {
     console.log(`build finished: ${this.root.name}`)
     return {
       pageTree: this.root,
-      pageMap
+      pageMap,
+      datasourceInfo: {
+        id: this.source.id,
+        name: this.source.name,
+        mountedPath: this.source.mountedPath,
+        category: this.source.category,
+        description: this.source.description,
+        github: this.source.github,
+        icon: this.source.icon,
+        config: this.source.config,
+      },
     }
   }
 

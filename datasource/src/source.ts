@@ -1,10 +1,10 @@
-import { Page, Root } from "./shared";
+import { DatasourceInfo, Page, Root } from "./shared";
 import {Feed, FeedOptions} from "feed";
 import {compileMarkdown} from "@content-collections/markdown";
 
 
 export class DataSource {
-  constructor(public pageTree: Root, public pageMap: Map<string, Page>) {
+  constructor(public pageTree: Root, public pageMap: Map<string, Page>, public datasourceInfo: DatasourceInfo) {
   }
 
   async getPageBySlug(slugs?: string[] | undefined) {
@@ -46,9 +46,9 @@ export class DataSource {
       id: this.pageTree.name ??  site,
       link: site,
       language: "zh-CN",
-      image: `${site}${this.pageTree.icon}`,
-      favicon: `${site}/favicon.ico`,
-      copyright: 'Auto2Doc',
+      image: `${site}${this.datasourceInfo.icon}`,
+      favicon: `${site}${this.datasourceInfo.icon ?? '/favicon.ico'}`,
+      copyright: `All rights reserved ${new Date().getFullYear()}`,
       ...feedOption,
     };
     const feed = new Feed(feedOptions);

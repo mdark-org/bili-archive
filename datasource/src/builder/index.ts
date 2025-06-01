@@ -35,10 +35,23 @@ type Tree = (Folder | Page) & {
   children: Tree[]
 }
 
+type DatasourceInfo = {
+  id: string
+  name: string
+  mountedPath: string
+  category?: string[],
+  description: string,
+  github?: { repo: string, branch: string, dir: string }
+  config?: any,
+  icon?: string,
+}
+
 type Source = {
   pageMap: Map<string, Page>,
-  pageTree: Tree
+  pageTree: Tree,
+  datasourceInfo: DatasourceInfo
 }
+
 export declare const sources: Source[];
 `)
   fs.writeSync(sourceFile, `export default ${pageMaps}`)
