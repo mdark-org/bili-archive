@@ -1,10 +1,11 @@
-name: Deploy to vercel on merge
+name: Deploy to vercel
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 14 * * *'
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
