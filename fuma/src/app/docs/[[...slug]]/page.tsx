@@ -83,7 +83,7 @@ export async function generateMetadata(props: {
   const datasource = source.getDatasourceBySlug(['docs', ...slugs ?? []])
   const icons = {
       icon: [{
-          url: datasource?.datasourceInfo?.icon ? `${config.baseUrl}/${datasource?.datasourceInfo?.icon}` : `${config.baseUrl}/favicon.ico`,
+          url: datasource?.datasourceInfo?.icon ? `${config.baseUrl}${datasource?.datasourceInfo?.icon}` : `${config.baseUrl}/favicon.ico`,
         }]
     }
   if(!page.data) {
@@ -109,7 +109,7 @@ export async function generateMetadata(props: {
     openGraph: {
       title: page.data.title,
       description: page.data.description,
-      url: `${config.baseUrl}/${page.url}`,
+      url: `${config.baseUrl}${page.url}`,
       type: 'article',
     },
     
