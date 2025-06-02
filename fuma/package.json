@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:prebuild": "esbuild --bundle --outfile=dist/bundle.js --platform=node ./scripts/build-source.ts",
-    "load:content": "node dist/bundle.js",
-    "build": "pnpm run build:prebuild && pnpm run load:content && pnpm run build:next",
-    "build:next": "next build",
-    "dev": "next dev",
+    "build:pre": "tsx ./scripts/pre-build.mts",
+    "build:post": "tsx ./scripts/post-build.mts",
+    "build": "pnpm build:pre && next build && pnpm build:post",
+    "dev": "next dev --turbo",
     "start": "next start",
     "db:gen": "pnpm drizzle-kit generate",
     "db:mi": "pnpm drizzle-kit migrate"
@@ -46,6 +45,7 @@
   "devDependencies": {
     "@repo/datasource": "workspace:*",
     "p-limit": "^6.2.0",
+    "tsx": "^4.19.4",
     "esbuild": "^0.25.5",
     "serialize-javascript": "^6.0.2",
     "@types/serialize-javascript": "^5.0.4",

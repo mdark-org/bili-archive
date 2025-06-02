@@ -1,12 +1,13 @@
 diff --git a/dist/components/layout/root-toggle.js b/dist/components/layout/root-toggle.js
-index 7dfae5135a0d84e56ac4f0fa7ad570149d6c65ab..bc1c4f47217f8476722568168b97d28009fa5ce7 100644
+index 2318de1eb7401ae6e17bffbcbe8ea48772a55237..1c5d5bdcaa635de0d4ea4f765d908251c7218a7f 100644
 --- a/dist/components/layout/root-toggle.js
 +++ b/dist/components/layout/root-toggle.js
-@@ -13,9 +13,10 @@ export function RootToggle({ options, placeholder, ...props }) {
+@@ -12,10 +12,11 @@ export function RootToggle({ options, placeholder, ...props }) {
+     const [open, setOpen] = useState(false);
      const { closeOnRedirect } = useSidebar();
      const pathname = usePathname();
++    const decodedPathname = decodeURIComponent(pathname);
      const selected = useMemo(() => {
-+        const decodedPathname = decodeURIComponent(pathname)
          return options.findLast((item) => item.urls
 -            ? item.urls.has(pathname.endsWith('/') ? pathname.slice(0, -1) : pathname)
 -            : isActive(item.url, pathname, true));
@@ -15,67 +16,11 @@ index 7dfae5135a0d84e56ac4f0fa7ad570149d6c65ab..bc1c4f47217f8476722568168b97d280
      }, [options, pathname]);
      const onClick = () => {
          closeOnRedirect.current = false;
-diff --git a/dist/contexts/tree.js b/dist/contexts/tree.js
-index 14b0bfdc420a199ae81d447e8940108049fbf9d6..68b368c6556fcdaa41dcdd0475451d8b2754657f 100644
---- a/dist/contexts/tree.js
-+++ b/dist/contexts/tree.js
-@@ -8,7 +8,7 @@ const PathContext = createContext([]);
- export function TreeContextProvider({ children, tree, }) {
-     const nextIdRef = useRef(0);
-     const pathname = usePathname();
--    const path = useMemo(() => searchPath(tree.children, pathname) ?? [], [pathname, tree]);
-+    const path = useMemo(() => searchPath(tree.children, decodeURIComponent(pathname)) ?? [], [pathname, tree]);
-     const root = path.findLast((item) => item.type === 'folder' && item.root) ?? tree;
-     root.$id ?? (root.$id = String(nextIdRef.current++));
-     return (_jsx(TreeContext.Provider, { value: useMemo(() => ({ root: root }), [root]), children: _jsx(PathContext.Provider, { value: path, children: children }) }));
-diff --git a/dist/i18n.js b/dist/i18n.js
-index 00b23104f4cc5874fde3103dc57ac5a3cce102b1..f8effb02d519cd744bf48648bbed786ecf93e284 100644
---- a/dist/i18n.js
-+++ b/dist/i18n.js
-@@ -10,7 +10,7 @@ export function I18nProvider({ locales = [], locale, ...props }) {
-     const onChange = props.onChange ??
-         // eslint-disable-next-line react-hooks/rules-of-hooks -- always controlled
-         useEffectEvent((value) => {
--            const segments = pathname.split('/').filter((v) => v.length > 0);
-+            const segments = decodeURIComponent(pathname).split('/').filter((v) => v.length > 0);
-             // If locale prefix hidden
-             if (segments[0] !== locale) {
-                 segments.unshift(value);
-diff --git a/dist/layouts/docs/shared.js b/dist/layouts/docs/shared.js
-index 30ffe74885092038406398859e7e7577adf645b8..ad108ac29d8f4fef38b3f1b534a3b279c815dcad 100644
---- a/dist/layouts/docs/shared.js
-+++ b/dist/layouts/docs/shared.js
-@@ -48,11 +48,23 @@ const defaultTransform = (option, node) => {
-     };
- };
- function getSidebarTabs(pageTree, { transform = defaultTransform } = {}) {
-+    function getFirstInternalPage(node) {
-+        if (node.index) return node.index;
-+        for (const child of node.children) {
-+            if (child.type == 'page' && !child.external) return child;
-+            if (child.type == 'folder') {
-+                const res = getFirstInternalPage(child);
-+                if (res) return res;
-+            }
-+        }
-+        return null;
-+    }
-+
-     function findOptions(node) {
-         const results = [];
-         if (node.root) {
--            const index = node.index ?? node.children.at(0);
--            if (index?.type === 'page') {
-+            const index = node.index ?? getFirstInternalPage(node) ?? node.children.at(0);
-+            if (index?.type === 'page' && !index.external) {
-                 const option = {
-                     url: index.url,
-                     title: node.name,
-diff --git a/dist/layouts/docs/sidebar.js b/dist/layouts/docs/sidebar.js
-index 78275f9777980def8d16e74d255877045f87402a..4555a0125dbc9ac71701699073e5ff395672f3a6 100644
---- a/dist/layouts/docs/sidebar.js
-+++ b/dist/layouts/docs/sidebar.js
-@@ -87,7 +87,7 @@ export function SidebarSeparator(props) {
+diff --git a/dist/components/layout/sidebar.js b/dist/components/layout/sidebar.js
+index f70f4400e1c23a0b8b169edf8c67f923d4ff276e..3dcfd4e5b82253f2b8a4aba2db17bcd5948cc364 100644
+--- a/dist/components/layout/sidebar.js
++++ b/dist/components/layout/sidebar.js
+@@ -103,7 +103,7 @@ export function SidebarSeparator(props) {
  }
  export function SidebarItem({ icon, ...props }) {
      const pathname = usePathname();
@@ -84,55 +29,46 @@ index 78275f9777980def8d16e74d255877045f87402a..4555a0125dbc9ac71701699073e5ff39
      const { prefetch, level } = useInternalContext();
      return (_jsxs(Link, { ...props, "data-active": active, className: cn(itemVariants({ active }), props.className), prefetch: prefetch, style: {
              paddingInlineStart: getOffset(level),
-@@ -114,7 +114,7 @@ export function SidebarFolderLink(props) {
-     const { open, setOpen } = useFolderContext();
-     const { prefetch, level } = useInternalContext();
-     const pathname = usePathname();
--    const active = props.href !== undefined && isActive(props.href, pathname, false);
-+    const active = props.href !== undefined && isActive(props.href, decodeURIComponent(pathname), false);
-     return (_jsxs(Link, { ...props, "data-active": active, className: cn(itemVariants({ active }), 'w-full', props.className), onClick: (e) => {
-             if (e.target.hasAttribute('data-icon')) {
-                 setOpen((prev) => !prev);
-diff --git a/dist/layouts/links.js b/dist/layouts/links.js
-index 7d273ec539cff1d3a00cbc79f56e94bd3028db77..1344da8ecd7bbc463fac0c8c24c488629ea7ea92 100644
---- a/dist/layouts/links.js
-+++ b/dist/layouts/links.js
-@@ -8,7 +8,7 @@ export const BaseLinkItem = forwardRef(({ item, ...props }, ref) => {
-     const pathname = usePathname();
-     const activeType = item.active ?? 'url';
-     const active = activeType !== 'none' &&
--        isActive(item.url, pathname, activeType === 'nested-url');
-+        isActive(item.url, decodeURIComponent(pathname), activeType === 'nested-url');
-     return (_jsx(Link, { ref: ref, href: item.url, external: item.external, ...props, "data-active": active, children: props.children }));
- });
- BaseLinkItem.displayName = 'BaseLinkItem';
-diff --git a/dist/layouts/notebook.client.js b/dist/layouts/notebook.client.js
-index 67c1c941890c081babb123b0beda986acc8c9a73..9e4d6a7a3c57eb86ba274c8e633648c29ccc4b3c 100644
---- a/dist/layouts/notebook.client.js
-+++ b/dist/layouts/notebook.client.js
-@@ -31,9 +31,10 @@ export function LayoutTabs(props) {
- }
- function useIsSelected(item) {
-     const pathname = usePathname();
-+    const decodedPathname = decodeURIComponent(pathname)
-     return item.urls
--        ? item.urls.has(pathname.endsWith('/') ? pathname.slice(0, -1) : pathname)
--        : isActive(item.url, pathname, true);
-+        ? item.urls.has(decodedPathname.endsWith('/') ? decodedPathname.slice(0, -1) : decodedPathname)
-+        : isActive(item.url, decodedPathname, true);
- }
- export function LayoutTab(item) {
-     const { closeOnRedirect } = useSidebar();
-diff --git a/dist/page.client.js b/dist/page.client.js
-index 6a9f3ebc575e6b0ca41c037a881c84c6c6bdaf02..c636eb9bef23435194a336de504246380f9cb33e 100644
---- a/dist/page.client.js
-+++ b/dist/page.client.js
-@@ -79,7 +79,7 @@ export function Footer({ items }) {
+diff --git a/dist/contexts/tree.js b/dist/contexts/tree.js
+index 8127493c994c5540278c523f6f1306662f9f8d5c..3f97f9988029097d66b2fb2a8bf47b0f064eca7d 100644
+--- a/dist/contexts/tree.js
++++ b/dist/contexts/tree.js
+@@ -12,7 +12,7 @@ export function TreeContextProvider(props) {
+     // using the id here to make sure this never happens
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+     const tree = useMemo(() => props.tree, [props.tree.$id ?? props.tree]);
+-    const path = useMemo(() => searchPath(tree.children, pathname) ?? [], [tree, pathname]);
++    const path = useMemo(() => searchPath(tree.children, decodeURIComponent(pathname)) ?? [], [tree, pathname]);
+     const root = path.findLast((item) => item.type === 'folder' && item.root) ?? tree;
+     root.$id ?? (root.$id = String(nextIdRef.current++));
+     return (_jsx(TreeContext.Provider, { value: useMemo(() => ({ root }), [root]), children: _jsx(PathContext.Provider, { value: path, children: props.children }) }));
+diff --git a/dist/layouts/docs/page-client.js b/dist/layouts/docs/page-client.js
+index d421e84f95b2931c0eef953cc220731fd20b31e7..402a987eec2735fbb436eb78400501d8cb90372b 100644
+--- a/dist/layouts/docs/page-client.js
++++ b/dist/layouts/docs/page-client.js
+@@ -123,7 +123,7 @@ export function PageFooter({ items, ...props }) {
          const cached = listCache.get(root);
          const list = cached ?? scanNavigationList(root.children);
          listCache.set(root, list);
 -        const idx = list.findIndex((item) => isActive(item.url, pathname, false));
-+        const idx = list.findIndex((item) => isActive(item.url, decodeURIComponent(pathname), false));
++        const idx = list.findIndex((item) => isActive(item.url,  decodeURIComponent(pathname), false));
          if (idx === -1)
              return {};
          return {
+diff --git a/dist/layouts/notebook-client.js b/dist/layouts/notebook-client.js
+index 5dfa63c1ece5361d02c1c9094ba23d61e7d07e72..d999128ff0a402059617b263f2f53ce8f9d8decc 100644
+--- a/dist/layouts/notebook-client.js
++++ b/dist/layouts/notebook-client.js
+@@ -38,9 +38,10 @@ export function LayoutTabs(props) {
+ export function LayoutTab(item) {
+     const { closeOnRedirect } = useSidebar();
+     const pathname = usePathname();
++    const decodedPathname = decodeURIComponent(pathname)
+     const selected = item.urls
+-        ? item.urls.has(pathname.endsWith('/') ? pathname.slice(0, -1) : pathname)
+-        : isActive(item.url, pathname, true);
++        ? item.urls.has(decodedPathname.endsWith('/') ? decodedPathname.slice(0, -1) : decodedPathname)
++        : isActive(item.url, decodedPathname, true);
+     return (_jsx(Link, { className: cn('inline-flex items-center py-2.5 border-b border-transparent gap-2 text-fd-muted-foreground text-sm text-nowrap', selected && 'text-fd-foreground font-medium border-fd-primary'), href: item.url, onClick: () => {
+             closeOnRedirect.current = false;
+         }, children: item.title }));

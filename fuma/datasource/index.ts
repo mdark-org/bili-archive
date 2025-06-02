@@ -3,7 +3,7 @@ import koalaOssDs from "./sources/koala-oss.ds";
 import refnewsDs from "./sources/refnews.ds";
 import opinionDs from "./sources/opinion.ds";
 import slangDs from "./sources/slang.ds";
-import {Datasource} from "@repo/datasource/shared";
+import type { Datasource } from "@repo/datasource/shared";
 import jhonKhanDs from "./sources/jhon-khan.ds";
 
 const ctx = {
@@ -13,7 +13,7 @@ const ctx = {
   }
 }
 
-const datasources = [
+export const datasources = [
   refnewsDs(ctx),
   btnewsDs(ctx),
   opinionDs(ctx),
@@ -21,6 +21,3 @@ const datasources = [
   koalaOssDs(ctx),
   jhonKhanDs(ctx)
 ] as Datasource[]
-
-
-export default datasources

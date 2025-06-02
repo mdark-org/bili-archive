@@ -6,12 +6,15 @@
   },
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
+  "engines": {
+    "node": "<=22.9.0"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.2"
+  },
   "pnpm": {
     "patchedDependencies": {
       "fumadocs-ui": "patches/fumadocs-ui.patch"
     }
-  },
-  "devDependencies": {
-    "turbo": "^2.5.2"
   }
 }

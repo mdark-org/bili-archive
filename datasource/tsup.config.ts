@@ -6,7 +6,6 @@ export default defineConfig((options) => {
     entry: [
       'src/**/*.[jt]s',
       'src/**/*.[jt]sx',
-      '!src/builder/**/*.ts',
       '!./src/**/*.d.ts',
       '!./src/**/*.test.[jt]s',
       '!./src/**/*.spec.[jt]s',
@@ -42,11 +41,6 @@ export default defineConfig((options) => {
       outDir: './dist/esm/',
       bundle: false,
       dts: false
-    },
-    {
-      ...commonOptions,
-      format: ['cjs'],
-      outDir: './dist/cjs/',
-    },
+    }
   ]
 })

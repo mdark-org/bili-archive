@@ -2,26 +2,24 @@
   "name": "@repo/datasource",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "pnpm run build:common && pnpm run build:builder",
+    "build": "pnpm run build:common",
     "build:builder": "tsup --config builder.tsup.ts",
     "build:common": "tsup"
   },
   "exports": {
     "./shared": {
-      "types": "./dist/types/shared/index.d.mts",
-      "import": "./dist/esm/shared/index.mjs",
-      "require": "./dist/cjs/shared/index.js"
+      "types": "./dist/types/shared/index.d.ts",
+      "import": "./dist/esm/shared/index.js"
     },
     "./source": {
-      "types": "./dist/types/source.d.mts",
-      "import": "./dist/esm/source.mjs",
-      "require": "./dist/cjs/source.js"
+      "types": "./dist/types/source.d.ts",
+      "import": "./dist/esm/source.js"
     },
     "./build": {
-      "types": "./dist/builder/types/index.d.mts",
-      "import": "./dist/builder/esm/index.mjs",
-      "require": "./dist/builder/cjs/source.js"
+      "types": "./dist/types/builder/index.d.ts",
+      "import": "./dist/esm/builder/index.js"
     }
   },
   "dependencies": {
