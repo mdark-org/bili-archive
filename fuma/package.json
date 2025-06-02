@@ -51,7 +51,7 @@
     "@types/serialize-javascript": "^5.0.4",
     "@types/micromatch": "^4.0.9",
     "@tailwindcss/postcss": "^4.1.8",
-    "@types/node": "22.13.10",
+    "@types/node": "22.9.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.1",
@@ -61,5 +61,8 @@
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": "<=22.9.0"
   }
 }
