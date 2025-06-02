@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:pre": "tsx ./scripts/pre-build.mts",
-    "build:post": "tsx ./scripts/post-build.mts",
+    "build:pre": "esbuild --bundle --outfile=dist/prebuild.js --platform=node ./scripts/pre-build.ts && node dist/prebuild.js",
+    "build:post": "esbuild --bundle --outfile=dist/postbuild.js --platform=node ./scripts/post-build.ts && node dist/postbuild.js",
     "build": "pnpm build:pre && next build && pnpm build:post",
     "dev": "next dev --turbo",
     "start": "next start",

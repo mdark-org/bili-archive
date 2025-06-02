@@ -1,10 +1,10 @@
 
-import { updateSearchIndexes } from './sync-orama-search-index.mjs';
+import { updateSearchIndexes } from './sync-orama-search-index';
 
 async function main() {
   await Promise.all([updateSearchIndexes()]);
 }
 
-await main().catch((e) => {
+main().catch((e) => {
   console.error('Failed to run post build script', e);
 });
