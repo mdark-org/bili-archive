@@ -5,7 +5,8 @@
   "scripts": {
     "build:pre": "esbuild --bundle --outfile=dist/prebuild.js --platform=node ./scripts/pre-build.ts && node dist/prebuild.js",
     "build:post": "esbuild --bundle --outfile=dist/postbuild.js --platform=node ./scripts/post-build.ts && node dist/postbuild.js",
-    "build": "pnpm build:pre && next build && pnpm build:post",
+    "build:next": "next build",
+    "build": "pnpm build:pre && pnpm build:next && pnpm build:post",
     "dev": "next dev --turbo",
     "start": "next start",
     "db:gen": "pnpm drizzle-kit generate",
@@ -45,8 +46,10 @@
   "devDependencies": {
     "@repo/datasource": "workspace:*",
     "p-limit": "^6.2.0",
+    "aws4fetch": "^1.0.20",
     "tsx": "^4.19.4",
     "esbuild": "^0.25.5",
+    "dotenv": "^16.5.0",
     "serialize-javascript": "^6.0.2",
     "@types/serialize-javascript": "^5.0.4",
     "@types/micromatch": "^4.0.9",
@@ -61,8 +64,5 @@
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.2"
-  },
-  "engines": {
-    "node": "<=22.9.0"
   }
 }

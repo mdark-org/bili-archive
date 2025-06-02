@@ -1,8 +1,10 @@
 
-import { updateSearchIndexes } from './sync-orama-search-index';
+import { updateSearchIndexes, updateSearchIndexFile } from './sync-orama-search-index';
+import 'dotenv/config'
 
 async function main() {
-  await Promise.all([updateSearchIndexes()]);
+  // await Promise.all([updateSearchIndexes()]);
+  await updateSearchIndexFile()
 }
 
 main().catch((e) => {
