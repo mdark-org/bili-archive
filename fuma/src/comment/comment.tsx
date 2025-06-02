@@ -2,10 +2,12 @@
 import { Comments as CommentsInternal, CommentsProps } from '@fuma-comment/react'
 import { createUploadThingStorage } from "@fuma-comment/react/uploadthing";
 import { authClient } from '@/lib/auth-client'
+import { usePathname } from 'next/navigation';
 
-const signIn = () => {
+const signIn = (callbackUrl: string) => {
   void authClient.signIn.social({
     provider: 'google',
+    callbackURL: callbackUrl,
   });
 };
 const comment = createUploadThingStorage();
@@ -13,6 +15,7 @@ const comment = createUploadThingStorage();
 type CommentProps = Omit<CommentsProps, 'storage' | 'auth'>
 
 export function Comments({...props}: CommentProps) {
+  const pathname = usePathname()
   return (
     <CommentsInternal
       storage={comment}
@@ -21,7 +24,7 @@ export function Comments({...props}: CommentProps) {
       }}
       auth={{
         type: "api",
-        signIn: signIn,
+        signIn: () => signIn(pathname),
       }}
       {...props}
   />
