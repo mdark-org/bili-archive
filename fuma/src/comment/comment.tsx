@@ -24,7 +24,7 @@ export function Comments({...props}: CommentProps) {
       }}
       auth={{
         type: "api",
-        signIn: () => signIn(decodeURIComponent(path)),
+        signIn: () => signIn(path),
       }}
       {...props}
   />
