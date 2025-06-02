@@ -97,6 +97,10 @@ export const buildSource = () => {
         rssItems.sort((a,b) => dateComparator(b.date,a.date))
       rssItems.forEach(it => feed.addItem(it))
       return feed
+    },
+    getDatasourceBySlug: (slug: string[]) => {
+      const url = `/${slug.join('/')}`
+      return datasources.find(it => url.startsWith(it.pageTree.url))
     }
   }
 }

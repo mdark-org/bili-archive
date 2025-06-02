@@ -4,9 +4,20 @@ import { config } from 'config';
 import Link from 'fumadocs-core/link';
 import { source } from '@/lib/source';
 import PageItem from '@/components/page-item';
+import { Metadata } from 'next';
 
 const gridColor =
 'color-mix(in oklab, var(--color-fd-primary) 10%, transparent)';
+
+export const metadata: Metadata = {
+  title: 'MDARK',
+  description: 'MDARK',
+  keywords: ['MDARK', 'mdark', 'markdown-archive'],
+  openGraph: {
+    title: 'MDARK',
+    type: 'website',
+  },
+}
 
 export default async function Page() {
   return <>
@@ -100,7 +111,7 @@ async function Recent() {
     <div className='flex flex-col w-full gap-2'>
       {pages.map(page => (
         <PageItem
-          key={page.id}
+          key={page.url}
           data={page}
           className='my-0'
         />

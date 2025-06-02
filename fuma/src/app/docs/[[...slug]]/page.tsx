@@ -79,8 +79,39 @@ export async function generateMetadata(props: {
   }
   if (!page) notFound();
 
+
+  const datasource = source.getDatasourceBySlug(['docs', ...slugs ?? []])
+  const icons = {
+      icon: [{
+          url: datasource?.datasourceInfo?.icon ? `${config.baseUrl}/${datasource?.datasourceInfo?.icon}` : `${config.baseUrl}/favicon.ico`,
+        }]
+    }
+  if(!page.data) {
+    return {
+      icons: icons,
+      title: page.title,
+      description: 'MDARK',
+      keywords: ['MDARK','mdark','markdown-archive'],
+    } satisfies Metadata;
+  }
   return {
-    title: page.data!.title,
-    description: page.data!.description,
+    title: page.data.title,
+    description: page.data.description,
+    icons: icons,
+    keywords: [
+      page.data.title,
+      ...(page.data.tags ?? []), 
+      ...(datasource?.datasourceInfo?.name ? [datasource?.datasourceInfo?.name] : []), 
+      'MDARK',
+      'mdark',
+      'markdown-archive'
+      ],
+    openGraph: {
+      title: page.data.title,
+      description: page.data.description,
+      url: `${config.baseUrl}/${page.url}`,
+      type: 'article',
+    },
+    
   } satisfies Metadata;
 }
