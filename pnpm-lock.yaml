@@ -88,7 +88,7 @@ importers:
         version: 1.2.4(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/extension-code-block@2.12.0(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0))(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(highlight.js@11.11.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@fuma-comment/server':
         specifier: ^1.2.4
-        version: 1.2.4(better-auth@1.2.8)(drizzle-orm@0.44.1(kysely@0.28.2)(postgres@3.4.7))(hono@4.7.10)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+        version: 1.2.4(better-auth@1.2.10)(drizzle-orm@0.44.1(kysely@0.28.2)(postgres@3.4.7))(hono@4.7.10)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       '@fumadocs/content-collections':
         specifier: 1.2.0
         version: 1.2.0(@content-collections/core@0.9.0(typescript@5.8.3))(@content-collections/mdx@0.2.2(@content-collections/core@0.9.0(typescript@5.8.3))(acorn@8.14.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(fumadocs-core@15.5.0(@oramacloud/client@2.1.4)(@types/react@19.1.6)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -105,8 +105,8 @@ importers:
         specifier: ^7.3.0
         version: 7.3.1(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(uploadthing@7.7.2(h3@1.15.3)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tailwindcss@4.1.8))
       better-auth:
-        specifier: ^1.2.8
-        version: 1.2.8
+        specifier: ^1.2.10
+        version: 1.2.10
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1606,11 +1606,11 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@simplewebauthn/browser@13.1.0':
-    resolution: {integrity: sha512-WuHZ/PYvyPJ9nxSzgHtOEjogBhwJfC8xzYkPC+rR/+8chl/ft4ngjiK8kSU5HtRJfczupyOh33b25TjYbvwAcg==}
+  '@simplewebauthn/browser@13.1.2':
+    resolution: {integrity: sha512-aZnW0KawAM83fSBUgglP5WofbrLbLyr7CoPqYr66Eppm7zO86YX6rrCjRB3hQKPrL7ATvY4FVXlykZ6w6FwYYw==}
 
-  '@simplewebauthn/server@13.1.1':
-    resolution: {integrity: sha512-1hsLpRHfSuMB9ee2aAdh0Htza/X3f4djhYISrggqGe3xopNjOcePiSDkDDoPzDYaaMCrbqGP1H2TYU7bgL9PmA==}
+  '@simplewebauthn/server@13.1.2':
+    resolution: {integrity: sha512-VwoDfvLXSCaRiD+xCIuyslU0HLxVggeE5BL06+GbsP2l1fGf5op8e0c3ZtKoi+vSg1q4ikjtAghC23ze2Q3H9g==}
     engines: {node: '>=20.0.0'}
 
   '@standard-schema/spec@1.0.0':
@@ -2195,11 +2195,11 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  better-auth@1.2.8:
-    resolution: {integrity: sha512-y8ry7ZW3/3ZIr82Eo1zUDtMzdoQlFnwNuZ0+b0RxoNZgqmvgTIc/0tCDC7NDJerqSu4UCzer0dvYxBsv3WMIGg==}
+  better-auth@1.2.10:
+    resolution: {integrity: sha512-nEj1RG4DdLUuJiV5CR93ORyPCptGRBwksaPPCkUtGo9ka+UIlTpaiKoTaTqVLLYlqwX4bOj9tJ32oBNdf2G3Kg==}
 
-  better-call@1.0.9:
-    resolution: {integrity: sha512-Qfm0gjk0XQz0oI7qvTK1hbqTsBY4xV2hsHAxF8LZfUYl3RaECCIifXuVqtPpZJWvlCCMlQSvkvhhyuApGUba6g==}
+  better-call@1.0.11:
+    resolution: {integrity: sha512-MOM01EMZFMzApWq9+WfqAnl2+DzFoMNp4H+lTFE1p7WF4evMeaQAAcOhI1WwMjITV4PGIWJ3Vn5GciQ5VHXbIA==}
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -5055,12 +5055,12 @@ snapshots:
       - highlight.js
       - supports-color
 
-  '@fuma-comment/server@1.2.4(better-auth@1.2.8)(drizzle-orm@0.44.1(kysely@0.28.2)(postgres@3.4.7))(hono@4.7.10)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))':
+  '@fuma-comment/server@1.2.4(better-auth@1.2.10)(drizzle-orm@0.44.1(kysely@0.28.2)(postgres@3.4.7))(hono@4.7.10)(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))':
     dependencies:
       drizzle-orm: 0.44.1(kysely@0.28.2)(postgres@3.4.7)
       zod: 3.25.48
     optionalDependencies:
-      better-auth: 1.2.8
+      better-auth: 1.2.10
       hono: 4.7.10
       next: 15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
@@ -5943,9 +5943,9 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@simplewebauthn/browser@13.1.0': {}
+  '@simplewebauthn/browser@13.1.2': {}
 
-  '@simplewebauthn/server@13.1.1':
+  '@simplewebauthn/server@13.1.2':
     dependencies:
       '@hexagon/base64': 1.1.28
       '@levischuck/tiny-cbor': 0.2.11
@@ -6541,22 +6541,22 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  better-auth@1.2.8:
+  better-auth@1.2.10:
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18
       '@noble/ciphers': 0.6.0
       '@noble/hashes': 1.8.0
-      '@simplewebauthn/browser': 13.1.0
-      '@simplewebauthn/server': 13.1.1
-      better-call: 1.0.9
+      '@simplewebauthn/browser': 13.1.2
+      '@simplewebauthn/server': 13.1.2
+      better-call: 1.0.11
       defu: 6.1.4
       jose: 5.10.0
       kysely: 0.28.2
       nanostores: 0.11.4
       zod: 3.25.48
 
-  better-call@1.0.9:
+  better-call@1.0.11:
     dependencies:
       '@better-fetch/fetch': 1.1.18
       rou3: 0.5.1
