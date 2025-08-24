@@ -50,7 +50,7 @@ export default async function Page(props: {
         { (page.data!.bvid || page.data!.ytid || page.data!.wbid || page.data!.xgid) && 
           <Video 
             bvid={page.data!.bvid}
-            ytid={page.data!.ytid ?? "sa-v59u7gSQ"}
+            ytid={page.data!.ytid}
             wbid={page.data!.wbid}
             xgid={page.data!.xgid}
             className={"rounded-md m-3"} 
