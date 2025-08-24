@@ -96,15 +96,3 @@ index 1ab3f081e81cc059a8a4ed27554021107ff075fa..cb81a3abd39c65a9988542b1067eb220
 +        isActive(item.url, decodeURIComponent(pathname), activeType === 'nested-url');
      return (_jsx(Link, { ref: ref, href: item.url, external: item.external, ...props, "data-active": active, children: props.children }));
  }
-diff --git a/dist/utils/is-active.js b/dist/utils/is-active.js
-index 0477de92f8f88c0fcae6091d958e53f6d8e54bd5..c47b78ce4125189fe6d796f94db86692587c5953 100644
---- a/dist/utils/is-active.js
-+++ b/dist/utils/is-active.js
-@@ -3,5 +3,7 @@ export function isActive(url, pathname, nested = true) {
-         url = url.slice(0, -1);
-     if (pathname.endsWith('/'))
-         pathname = pathname.slice(0, -1);
-+    console.log("url", url)
-+    console.log("pathname", pathname)
-     return url === pathname || (nested && pathname.startsWith(`${url}/`));
- }

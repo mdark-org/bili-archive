@@ -28,6 +28,7 @@ export async function uploadFileToS3WithAws4Fetch(filePath: string, s3ObjectFull
     const fileBuffer = await fs.promises.readFile(filePath);
   try {
     console.log(`Starting upload file: [${filePath}] ...`);
+    // @ts-ignore
     const resp = await fetch(uploadUrl, { method: "PUT", body: fileBuffer })
     if (resp.ok) {
       console.log(`Successfully uploaded ${filePath} to ${s3ObjectFullUrl}`);
