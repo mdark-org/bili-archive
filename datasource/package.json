@@ -31,16 +31,15 @@
     "gray-matter": "^4.0.3",
     "micromatch": "^4.0.8",
     "feed": "^5.1.0",
-    "unstorage": "1.16.0",
-    "p-limit": "^6.2.0",
+    "unstorage": "1.16.1",
+    "p-limit": "^7.0.0",
     "tsup": "^8.5.0",
     "serialize-javascript": "^6.0.2",
     "@types/serialize-javascript": "^5.0.4",
     "@types/micromatch": "^4.0.9",
     "@types/node": "22.13.10",
     "eslint": "^9.28.0",
-    "eslint-config-next": "15.3.3",
-    "any-date-parser": "^2.2.0",
-    "typescript": "^5.8.2"
+    "any-date-parser": "^2.2.3",
+    "typescript": "^5.9.2"
   }
 }
