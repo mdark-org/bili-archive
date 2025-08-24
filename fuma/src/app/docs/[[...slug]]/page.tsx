@@ -47,7 +47,16 @@ export default async function Page(props: {
       <DocsTitle>{page.data!.title}</DocsTitle>
       <DocsDescription>{page.data!.description}</DocsDescription>
       <DocsBody>
-        { page.data!.bvid && <Video bvid={page.data!.bvid} className={"rounded-md m-3"} iframeClassname={"rounded-md"}/> }
+        { (page.data!.bvid || page.data!.ytid || page.data!.wbid || page.data!.xgid) && 
+          <Video 
+            bvid={page.data!.bvid}
+            ytid={page.data!.ytid ?? "sa-v59u7gSQ"}
+            wbid={page.data!.wbid}
+            xgid={page.data!.xgid}
+            className={"rounded-md m-3"} 
+            iframeClassname={"rounded-md"}
+          /> 
+        }
         <MdxContent
           components={{
             ...defaultMdxComponents,
