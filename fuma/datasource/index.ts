@@ -1,10 +1,10 @@
-import btnewsDs from "./sources/btnews.ds";
-import koalaOssDs from "./sources/koala-oss.ds";
-import refnewsDs from "./sources/refnews.ds";
-import opinionDs from "./sources/opinion.ds";
-import slangDs from "./sources/slang.ds";
+import btnewsDs from "./sources/btnews.ds.ts";
+import koalaOssDs from "./sources/koala-oss.ds.ts";
+import refnewsDs from "./sources/refnews.ds.ts";
+import opinionDs from "./sources/opinion.ds.ts";
+import slangDs from "./sources/slang.ds.ts";
 import type { Datasource } from "@repo/datasource/shared";
-import jhonKhanDs from "./sources/jhon-khan.ds";
+import jhonKhanDs from "./sources/jhon-khan.ds.ts";
 
 const ctx = {
   env: {

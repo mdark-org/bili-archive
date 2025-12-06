@@ -12,12 +12,12 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
       "content-collections": ["./.content-collections/generated"],
-//      "@doc-source": ["./.source/generated"]
     },
     "plugins": [
       {

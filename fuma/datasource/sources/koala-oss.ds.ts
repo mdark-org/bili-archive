@@ -1,5 +1,5 @@
-import {Context} from "../shared";
-import {addRSSPage, dateFolderTransformer} from "../transformer";
+import type {Context} from "../shared.ts";
+import {addRSSPage, dateFolderTransformer} from "../transformer.ts";
 
 export default (ctx: Context) => ({
   id: 'archive.koala-oss',

@@ -1,7 +1,7 @@
 import type { SyncOptions, OramaDocument } from 'fumadocs-core/search/orama-cloud';
 import * as fs from 'node:fs/promises';
 import { CloudManager } from '@oramacloud/client';
-import { uploadFileToS3WithAws4Fetch } from './upload';
+import { uploadFileToS3WithAws4Fetch } from './upload.ts';
 
 // failed if body too large.
 

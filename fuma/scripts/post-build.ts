@@ -1,5 +1,5 @@
 
-import { updateSearchIndexes, updateSearchIndexFile } from './sync-orama-search-index';
+import { updateSearchIndexFile } from './sync-orama-search-index.ts';
 import 'dotenv/config'
 
 async function main() {

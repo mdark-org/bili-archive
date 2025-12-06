@@ -4,40 +4,37 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm run build:common",
-    "build:builder": "tsup --config builder.tsup.ts",
-    "build:common": "tsup"
+    "build": "tsdown"
   },
   "exports": {
     "./shared": {
-      "types": "./dist/types/shared/index.d.ts",
-      "import": "./dist/esm/shared/index.js"
+      "types": "./dist/shared/index.d.mts",
+      "import": "./dist/shared/index.mjs"
     },
     "./source": {
-      "types": "./dist/types/source.d.ts",
-      "import": "./dist/esm/source.js"
+      "types": "./dist/source.d.mts",
+      "import": "./dist/source.mjs"
     },
     "./build": {
-      "types": "./dist/types/builder/index.d.ts",
-      "import": "./dist/esm/builder/index.js"
+      "types": "./dist/builder/index.d.mts",
+      "import": "./dist/builder/index.mjs"
     }
   },
   "dependencies": {
+    "@content-collections/markdown": "^0.1.4",
     "zod": "^3.25.42",
-    "@content-collections/markdown": "^0.1.4"
-
+    "feed": "^5.1.0",
+    "unstorage": "1.17.3"
   },
   "devDependencies": {
-    "gray-matter": "^4.0.3",
     "micromatch": "^4.0.8",
-    "feed": "^5.1.0",
-    "unstorage": "1.16.1",
-    "p-limit": "^7.0.0",
-    "tsup": "^8.5.0",
+    "@types/micromatch": "^4.0.9",
+    "gray-matter": "^4.0.3",
+    "p-limit": "^7.2.0",
     "serialize-javascript": "^6.0.2",
     "@types/serialize-javascript": "^5.0.4",
-    "@types/micromatch": "^4.0.9",
-    "@types/node": "22.13.10",
-    "any-date-parser": "^2.2.3"
+    "any-date-parser": "^2.2.3",
+    "glob": "^13.0.0",
+    "tsdown": "0.17.0"
   }
 }

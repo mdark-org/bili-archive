@@ -1,10 +1,10 @@
-import {sources} from ".source/generated";
+import {sources} from ".source/generated/index.js";
 import {DataSource} from "@repo/datasource/source";
 import { Root } from "@repo/datasource/shared";
 import {icons} from "lucide-react";
 import {createElement} from "react";
 import {Feed, FeedOptions} from "feed";
-import {config} from "../../../config";
+import {config} from "../../../config/index.tsx";
 
 
 const icon = (icon: any) => {
