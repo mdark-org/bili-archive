@@ -38,8 +38,6 @@
     "@types/serialize-javascript": "^5.0.4",
     "@types/micromatch": "^4.0.9",
     "@types/node": "22.13.10",
-    "eslint": "^9.28.0",
-    "any-date-parser": "^2.2.3",
-    "typescript": "^5.9.2"
+    "any-date-parser": "^2.2.3"
   }
 }
