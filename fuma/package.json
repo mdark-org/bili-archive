@@ -50,6 +50,7 @@
     "@types/micromatch": "^4.0.10",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/react": "^19.2",
+    "dotenv": "^17.2.3",
     "@types/react-dom": "^19.2",
     "drizzle-kit": "^0.31.8",
     "eslint": "^10.0.0-alpha.1",

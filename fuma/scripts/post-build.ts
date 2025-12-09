@@ -4,7 +4,7 @@ import 'dotenv/config'
 
 async function main() {
   // await Promise.all([updateSearchIndexes()]);
-  // await updateSearchIndexFile()
+  await updateSearchIndexFile()
 }
 
 main().catch((e) => {
