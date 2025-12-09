@@ -3,20 +3,48 @@ import serialize from "serialize-javascript";
 import * as fs from "node:fs";
 import {Datasource} from "../shared";
 import {SourceBuilder} from "./builder";
+
+export const createDatasourceContents = (datasource: any) => {
+  const sourceFile = fs.openSync(`.source/generated/${datasource.datasourceInfo.id}.json`, 'w+')
+  // const pageMaps = JSON.stringify(sourceFile)
+  fs.writeSync(sourceFile,
+    JSON.stringify(datasource, (k, v) => {
+      if(v === null) return null
+      if(v === undefined) return undefined
+      if(typeof v === 'string'
+        || typeof v === 'number'
+        || typeof v === 'boolean') return v
+      if(typeof v === 'bigint') return String(v)
+      if(typeof v === 'function' || typeof v === 'symbol') return undefined
+      // for map return kv map
+      if(v instanceof Map) {
+        let ans = {}
+        // @ts-ignore
+        v.entries().forEach(([k,v])=> ans[k] = v)
+        return ans
+      }
+      return v
+    }))
+    // `export const source = ${pageMaps}`)
+}
+
 export const build = async (datasources: Datasource[]) => {
-  const sources = []
-  const res = await Promise.all(datasources.map(it => new SourceBuilder(it).build()))
-  for ( const source of res) {
-    sources.push(source)
-  }
-  const pageMaps = serialize(sources, { space: 2, unsafe: true })
+  // const sources = []
+
   fs.mkdirSync('.source/generated', { recursive: true })
-  const sourceFile = fs.openSync('.source/generated/sources.js', 'w+')
-  const indexFile = fs.openSync('.source/generated/index.js', 'w+')
-  const dtsFile = fs.openSync('.source/generated/index.d.ts', 'w+')
+  const res = await Promise.all(datasources.map(it => new SourceBuilder(it).build()))
+  const keys = res.map(it => it.datasourceInfo.id)
+  for ( const source of res) {
+    createDatasourceContents(source)
+  }
+  const importLines = keys.map(it => `import * as ${it} from "./${it}.json" with {type: "json"};`)
+    .join("\n")
+  const exportLine = `export { ${keys.join(',')} }`
+  const indexFile = fs.openSync(`.source/generated/index.mjs`, 'w+')
+  const dtsFile = fs.openSync(`.source/generated/index.d.ts`, 'w+')
   fs.writeSync(indexFile, `
-import sources from "./sources.js";
-export { sources };
+  ${importLines}
+  ${exportLine}
 `)
   fs.writeSync(dtsFile, `
 type Page = {
@@ -51,8 +79,6 @@ type Source = {
   pageTree: Tree,
   datasourceInfo: DatasourceInfo
 }
-
-export declare const sources: Source[];
 `)
-  fs.writeSync(sourceFile, `export default ${pageMaps}`)
+
 }

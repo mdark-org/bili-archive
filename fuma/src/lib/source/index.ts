@@ -1,12 +1,12 @@
-import {sources} from ".source/generated/index.js";
+import * as sources from ".source/generated/index.mjs";
 import {DataSource} from "@repo/datasource/source";
 import { Root } from "@repo/datasource/shared";
 import {icons} from "lucide-react";
 import {createElement} from "react";
 import {Feed, FeedOptions} from "feed";
-import {config} from "../../../config/index.tsx";
-
-
+import {config} from "../../../config";
+import {datasourceSchema} from "@/lib/source/schema.ts";
+import * as parser from 'any-date-parser'
 const icon = (icon: any) => {
   if (!icon) return
   if (icon in icons) return createElement(icons[icon as keyof typeof icons])
@@ -32,8 +32,10 @@ export function generateRssFeed(category: string, feedOption?: Partial<FeedOptio
 
 export const buildSource = () => {
   const base = { name: 'root', children: [] as Root[] }
-  // @ts-ignore
-  const datasources = sources.map(it => new DataSource(it.pageTree, it.pageMap, it.datasourceInfo))
+  const datasources =
+    // @ts-ignore
+    Object.keys(sources).map(key => datasourceSchema.parse(sources[key]))
+  .map(it => new DataSource(it.pageTree, it.pageMap, it.datasourceInfo))
   datasources.forEach(it => {
     it.pageTree.icon = icon(it.pageTree.icon)
     base.children.push(it.pageTree)
@@ -106,7 +108,14 @@ export const buildSource = () => {
 }
 const zero = new Date(0)
 const dateComparator = (a?: Date, b?: Date) => {
-  return (a ?? zero).getTime() - (b?? zero).getTime()
+  return parserAsDate(a, zero).getTime() - parserAsDate(b, zero).getTime()
+}
+export const parserAsDate = <T = null>(x: Date|string | undefined | null, fallback: T | null= null): Date | T => {
+  if(typeof x === 'string') {
+    return parser.fromString(x)
+  }
+  if(x === undefined || x === null) return fallback ?? new Date(0) as T
+  return x
 }
 
 export const source = buildSource()

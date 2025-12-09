@@ -2,7 +2,7 @@ import {addRSSPage, indexFolderTransformer} from "../transformer.ts";
 import {type Context} from "../shared.ts";
 
 export default (ctx: Context) => ({
-  id: 'btnews.slang',
+  id: 'btnews_slang',
   name: '讲点黑话',
   description: "讲点黑话",
   mountedPath: '/docs/slang',

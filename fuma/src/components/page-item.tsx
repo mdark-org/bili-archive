@@ -2,6 +2,7 @@ import { cn } from '@/lib/cn';
 import { Page } from '@repo/datasource/shared';
 import Link from 'fumadocs-core/link';
 import React from 'react';
+import {parserAsDate} from "@/lib/source";
 
 type PageItemProps = {
   data: Page;
@@ -28,7 +29,7 @@ const PageItem: React.FC<PageItemProps> = ({ data, className, ...rest}) => {
         {data.title}
       </div>
       <div className='h-[1px] grow w-full border-t border-t-fd-muted-foreground/70 border-dashed hidden md:block'/>
-      <time dateTime={data.data?.date?.toISOString()} className="text-xs text-fd-muted-foreground whitespace-nowrap self-end">
+      <time dateTime={parserAsDate(data.data?.date)?.toISOString()} className="text-xs text-fd-muted-foreground whitespace-nowrap self-end">
         {formatRelativeTime(data.data?.date!)}
       </time>
     </Link>

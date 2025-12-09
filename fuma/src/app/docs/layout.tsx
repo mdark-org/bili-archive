@@ -6,7 +6,6 @@ import { source } from "@/lib/source";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    // @ts-ignore
     <DocsLayout tree={source.tree} {...baseOptions}>
       {children}
     </DocsLayout>

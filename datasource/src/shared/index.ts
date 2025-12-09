@@ -78,8 +78,8 @@ export type Folder = {
   name: string,
   title: string,
   type: 'folder',
-  defaultOpen?: boolean | null,
-  root?: boolean | null,
+  defaultOpen?: boolean,
+  root?: boolean,
   description?: string,
   icon?: any
   index?: Page

@@ -1,5 +1,12 @@
 import type { FolderTransformer, RootTransformer } from "@repo/datasource/shared";
-
+import * as parser from "any-date-parser";
+const parserAsDate = <T = null>(x: Date|string | undefined | null, fallback: T | null = null): Date | T => {
+  if(typeof x === 'string') {
+    return parser.fromString(x)
+  }
+  if(x === undefined || x === null) return fallback ?? new Date(0) as T
+  return x
+}
 export const indexFolderTransformer: FolderTransformer = {
   beforeBuildTree: (folder) => {
     const regex = /\d{4}_\d{4}/
@@ -34,7 +41,7 @@ export const dateFolderTransformer: FolderTransformer = {
         return -1
       }
       if(a.type === 'page' && b.type == "page") {
-        return (b.data?.date?.getTime() ?? 0) - (a.data?.date?.getTime() ?? 0)
+        return parserAsDate(b.data?.date, new Date(0)).getTime() - parserAsDate(a.data?.date, new Date(0)).getTime()
       }
       return 0
     })

@@ -2,7 +2,7 @@ import {addRSSPage, indexFolderTransformer} from "../transformer.ts";
 import {type Context} from "../shared.ts";
 
 export default (ctx: Context) => ({
-    id: 'btnews.opinion',
+    id: 'btnews_opinion',
     name: '高见',
     description: "技术解构旧世界，技术建构新世界",
     mountedPath: '/docs/opinion',

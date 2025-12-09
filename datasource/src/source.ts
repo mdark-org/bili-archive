@@ -1,7 +1,19 @@
 import { DatasourceInfo, Page, Root } from "./shared";
 import {Feed, FeedOptions} from "feed";
 import {compileMarkdown} from "@content-collections/markdown";
+import * as parser from "any-date-parser";
+export const parserAsDate = <T = null>(x: Date|string | undefined | null, fallback: T | null= null): Date | T => {
+  try {
+    if(typeof x === 'string') {
+      return parser.fromString(x)
+    }
+    if(x === undefined || x === null) return new Date(0) as T
+    return new Date(x)
+  }catch (e) {
+    return new Date(0)
+  }
 
+}
 
 export class DataSource {
   constructor(public pageTree: Root, public pageMap: Map<string, Page>, public datasourceInfo: DatasourceInfo) {
@@ -35,7 +47,8 @@ export class DataSource {
 
   async getFirstPages() {
     const pages = Array.from(this.pageMap.values())
-    return pages.sort((a,b) => (b.data?.date?.getTime() ?? 0) - (a.data?.date?.getTime() ?? 0))[0]
+    return pages.sort((a,b) =>
+      (parserAsDate(b.data?.date)?.getTime() ?? 0) - (parserAsDate(a.data?.date)?.getTime() ?? 0))[0]
   }
 
   private generateFeed(feedOption?: Partial<FeedOptions> & {baseUrl: string}) {
@@ -59,7 +72,9 @@ export class DataSource {
     const pages = await this.getPages()
     let rssPages = pages.filter(it => it.type === 'page' && !it.external)
       .filter(it => it && it.data?.rss !== false && !it.external)
-      .toSorted((a,b) => (b?.data?.date?.getTime() ?? 0) - (a?.data?.date?.getTime() ?? 0))
+      .toSorted(
+        (a,b) =>
+          (parserAsDate(b.data?.date)?.getTime() ?? 0) - (parserAsDate(a.data?.date)?.getTime() ?? 0))
     if (limit) {
       rssPages = rssPages.slice(0, limit)
     }

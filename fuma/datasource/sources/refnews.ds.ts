@@ -2,7 +2,7 @@ import {addRSSPage, indexFolderTransformer} from "../transformer.ts";
 import {type Context, type DatasourceCreator} from "../shared.ts";
 
 const refnews : DatasourceCreator<'github'>= (ctx: Context) => ({
-  id: 'btnews.refnews',
+  id: 'btnews_refnews',
   name: '参考信息',
   description: "资讯连连看，消灭信息差",
   mountedPath: '/docs/refnews',

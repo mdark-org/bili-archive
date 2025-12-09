@@ -2,7 +2,7 @@ import type {Context} from "../shared.ts";
 import {addRSSPage, dateFolderTransformer} from "../transformer.ts";
 
 export default (ctx: Context) => ({
-  id: 'archive.koala-oss',
+  id: 'archive_koala_oss',
   mountedPath: '/docs/koala-oss',
   category: [],
   name: 'Koala聊开源',
