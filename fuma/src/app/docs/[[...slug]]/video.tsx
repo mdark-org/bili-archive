@@ -153,6 +153,11 @@ export default function Video({ bvid, ytid, wbid, xgid, iframeClassname, ...rest
     dragStartInfo.current = { startX: clientX, startY: clientY, initialPipX: pipPosition.x, initialPipY: pipPosition.y };
   };
 
+  const handleClosePip = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation();
+    setIsPip(false);
+  }
+
   const currentPlatform = platforms.find(p => p.id === activePlatform);
   let src = '';
   if (currentPlatform) {
@@ -173,6 +178,8 @@ export default function Video({ bvid, ytid, wbid, xgid, iframeClassname, ...rest
 
   const baseStyles: React.CSSProperties = {
     borderRadius: '0.5rem',
+    overflow: 'hidden',
+    backgroundColor: '#000',
   };
 
   const pipStyles: React.CSSProperties = {
@@ -186,8 +193,6 @@ export default function Video({ bvid, ytid, wbid, xgid, iframeClassname, ...rest
     boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
     border: '1px solid rgba(0,0,0,0.1)',
     transform: `translate(${pipPosition.x}px, ${pipPosition.y}px)`,
-    cursor: isDragging ? 'grabbing' : 'grab',
-    pointerEvents: isDragging ? 'none' : 'auto',
   };
 
   const originalStyles: React.CSSProperties = {
@@ -207,17 +212,63 @@ export default function Video({ bvid, ytid, wbid, xgid, iframeClassname, ...rest
       style={{ position: 'relative', padding: "30% 45%" }} 
       {...rest}
     >
-      <iframe
-        className={iframeClassname}
-        style={isPip ? pipStyles : originalStyles}
-        src={src}
-        onMouseDown={handleDragStart}
-        onTouchStart={handleDragStart}
-        frameBorder="no"
-        scrolling="no"
-        allowFullScreen={true}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />
+      <div style={isPip ? pipStyles : originalStyles}>
+        {isPip && (
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '32px',
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              padding: '0 8px',
+              cursor: isDragging ? 'grabbing' : 'grab',
+              zIndex: 60,
+            }}
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
+          >
+            <button
+              onClick={handleClosePip}
+              style={{
+                background: 'rgba(0, 0, 0, 0.5)',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                borderRadius: '50%',
+                width: '20px',
+                height: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '12px',
+                padding: 0,
+              }}
+              title="Close PiP"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+        <iframe
+          className={iframeClassname}
+          style={{
+            width: '100%',
+            height: '100%',
+            pointerEvents: isDragging ? 'none' : 'auto',
+            border: 'none',
+          }}
+          src={src}
+          frameBorder="no"
+          scrolling="no"
+          allowFullScreen={true}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+      </div>
       {showTabs && (
         <div style={{
           position: 'absolute',
