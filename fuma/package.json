@@ -12,7 +12,7 @@
     "db:gen": "pnpm drizzle-kit generate",
     "db:mi": "pnpm drizzle-kit migrate"
   },
-
+  "type": "module",
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "@oramacloud/client": "2.1.4",
