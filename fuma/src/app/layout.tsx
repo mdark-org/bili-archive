@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 
 import "./global.css";
-import { JetBrains_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import {Provider} from "@/components/provider";
 import { GoogleAnalytics } from '@next/third-parties/google'
-const inter = JetBrains_Mono({
+const inter = Inter({
   subsets: ["latin"]
 })
 
