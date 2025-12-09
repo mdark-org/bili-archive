@@ -1,6 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { config } from '../../config'
-import { LinkItemType } from "fumadocs-ui/layouts/links";
+import { LinkItemType } from "fumadocs-ui/layouts/shared";
 import { AlbumIcon } from "lucide-react";
 
 

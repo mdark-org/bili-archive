@@ -1,0 +1,13 @@
+diff --git a/dist/chunk-K4WNLOVQ.js b/dist/chunk-K4WNLOVQ.js
+index 52cd3842af32548cf612c9ae5d9792cad877c861..ede4528485eb3075a7ee50698bda693771a0be28 100644
+--- a/dist/chunk-K4WNLOVQ.js
++++ b/dist/chunk-K4WNLOVQ.js
+@@ -32,7 +32,7 @@ function FrameworkProvider({
+   return /* @__PURE__ */ jsx(FrameworkContext, { value: framework, children });
+ }
+ function usePathname() {
+-  return use(FrameworkContext).usePathname();
++  return decodeURIComponent(use(FrameworkContext).usePathname());
+ }
+ function useRouter() {
+   return use(FrameworkContext).useRouter();
