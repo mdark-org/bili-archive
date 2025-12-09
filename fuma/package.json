@@ -38,7 +38,8 @@
     "feed": "^5.1.0",
     "uploadthing": "^7.7.4",
     "@next/third-parties": "16.0.8",
-    "shiki": "^3.11.0"
+    "shiki": "^3.11.0",
+    "any-date-parser": "^2.2.3"
   },
   "devDependencies": {
     "@repo/datasource": "workspace:*",
@@ -53,7 +54,6 @@
     "drizzle-kit": "^0.31.8",
     "eslint": "^10.0.0-alpha.1",
     "eslint-config-next": "16.0.8",
-    "any-date-parser": "^2.2.3",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
   }

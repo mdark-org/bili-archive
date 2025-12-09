@@ -89,6 +89,9 @@ importers:
       '@uploadthing/react':
         specifier: ^7.3.3
         version: 7.3.3(next@16.0.8(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)(uploadthing@7.7.4(h3@1.15.4)(next@16.0.8(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(tailwindcss@4.1.17))
+      any-date-parser:
+        specifier: ^2.2.3
+        version: 2.2.3
       better-auth:
         specifier: 1.4.6
         version: 1.4.6(next@16.0.8(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -162,9 +165,6 @@ importers:
       '@types/serialize-javascript':
         specifier: ^5.0.4
         version: 5.0.4
-      any-date-parser:
-        specifier: ^2.2.3
-        version: 2.2.3
       aws4fetch:
         specifier: ^1.0.20
         version: 1.0.20
