@@ -76,7 +76,7 @@ importers:
         version: 1.4.0(@floating-ui/dom@1.7.4)(@tiptap/extension-code-block@3.13.0(@tiptap/core@3.13.0(@tiptap/pm@3.13.0))(@tiptap/pm@3.13.0))(@tiptap/extensions@3.13.0(@tiptap/core@3.13.0(@tiptap/pm@3.13.0))(@tiptap/pm@3.13.0))(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(highlight.js@11.11.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
       '@fuma-comment/server':
         specifier: ^1.4.0
-        version: 1.4.0(better-auth@1.4.6(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(drizzle-orm@0.45.0(kysely@0.28.8)(postgres@3.4.7))(hono@4.10.8)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
+        version: 1.4.0(better-auth@1.4.6(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(drizzle-orm@0.45.0(kysely@0.28.8)(postgres@3.4.7))(hono@4.11.4)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       '@fumadocs/mdx-remote':
         specifier: ^1.4.3
         version: 1.4.3(@types/react@19.2.7)(fumadocs-core@16.2.4(patch_hash=c12bbbcfd264af39b460dd6b51d48c815ebb001709757550e06c63c4165c9b7e)(@types/react@19.2.7)(lucide-react@0.556.0(react@19.2.1))(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(zod@3.25.76))(react@19.2.1)
@@ -114,8 +114,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       hono:
-        specifier: 4.10.8
-        version: 4.10.8
+        specifier: 4.11.4
+        version: 4.11.4
       lucide-react:
         specifier: 0.556.0
         version: 0.556.0(react@19.2.1)
@@ -1553,6 +1553,9 @@ packages:
 
   '@standard-schema/spec@1.0.0-beta.4':
     resolution: {integrity: sha512-d3IxtzLo7P1oZ8s8YNvxzBUXRXojSut8pbPrTYtzsc5sn4+53jVqbk66pQerSZbZSJZQux6LkclB/+8IDordHg==}
+
+  '@standard-schema/spec@1.1.0':
+    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -3000,8 +3003,8 @@ packages:
     resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
     engines: {node: '>=12.0.0'}
 
-  hono@4.10.8:
-    resolution: {integrity: sha512-DDT0A0r6wzhe8zCGoYOmMeuGu3dyTAE40HHjwUsWFTEy5WxK1x2WDSsBPlEXgPbRIFY6miDualuUDbasPogIww==}
+  hono@4.11.4:
+    resolution: {integrity: sha512-U7tt8JsyrxSRKspfhtLET79pU8K+tInj5QZXs1jSugO1Vq5dFj3kmZsRldo29mTBfcjDRVRXrEZ6LS63Cog9ZA==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -4723,7 +4726,7 @@ snapshots:
 
   '@content-collections/core@0.12.0(typescript@5.9.3)':
     dependencies:
-      '@standard-schema/spec': 1.0.0
+      '@standard-schema/spec': 1.1.0
       camelcase: 8.0.0
       chokidar: 4.0.3
       esbuild: 0.25.12
@@ -5023,14 +5026,14 @@ snapshots:
       - supports-color
       - typescript
 
-  '@fuma-comment/server@1.4.0(better-auth@1.4.6(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(drizzle-orm@0.45.0(kysely@0.28.8)(postgres@3.4.7))(hono@4.10.8)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
+  '@fuma-comment/server@1.4.0(better-auth@1.4.6(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(drizzle-orm@0.45.0(kysely@0.28.8)(postgres@3.4.7))(hono@4.11.4)(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
     dependencies:
       drizzle-orm: 0.45.0(kysely@0.28.8)(postgres@3.4.7)
       urlpattern-polyfill: 10.1.0
       zod: 4.1.13
     optionalDependencies:
       better-auth: 1.4.6(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      hono: 4.10.8
+      hono: 4.11.4
       next: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
 
   '@fumadocs/mdx-remote@1.4.3(@types/react@19.2.7)(fumadocs-core@16.2.4(patch_hash=c12bbbcfd264af39b460dd6b51d48c815ebb001709757550e06c63c4165c9b7e)(@types/react@19.2.7)(lucide-react@0.556.0(react@19.2.1))(next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(zod@3.25.76))(react@19.2.1)':
@@ -5821,6 +5824,8 @@ snapshots:
   '@standard-schema/spec@1.0.0': {}
 
   '@standard-schema/spec@1.0.0-beta.4': {}
+
+  '@standard-schema/spec@1.1.0': {}
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -7459,7 +7464,7 @@ snapshots:
 
   highlight.js@11.11.1: {}
 
-  hono@4.10.8: {}
+  hono@4.11.4: {}
 
   hookable@5.5.3: {}
 
