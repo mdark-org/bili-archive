@@ -27,7 +27,7 @@ export default async function Page() {
       background: `repeating-linear-gradient(to right, ${gridColor}, ${gridColor} 1px,transparent 1px,transparent 50px), repeating-linear-gradient(to bottom, ${gridColor}, ${gridColor} 1px,transparent 1px,transparent 50px)`,
     }}
   />
-  <main className="container relative max-w-[1100px] px-2 py-4 z-[2] lg:py-8">
+  <main className="container mx-auto relative max-w-[1100px] px-2 py-4 z-[2] lg:py-8">
     <div
       style={{
         background:

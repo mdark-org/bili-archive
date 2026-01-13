@@ -2,6 +2,7 @@ import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { config } from '../../config'
 import { LinkItemType } from "fumadocs-ui/layouts/shared";
 import { AlbumIcon } from "lucide-react";
+import TelegramIcon from "@/components/icons/telegram.tsx";
 
 
 export const baseOptions: BaseLayoutProps = {
@@ -16,6 +17,13 @@ export const linkItems: LinkItemType[] = [
     text: '文稿',
     url: '/docs',
     active: 'url',
+  },{
+    icon: <TelegramIcon />,
+    type: 'icon',
+    text: 'Telegram',
+    url: 'https://t.me/mdark_org',
+    active: 'url',
+    on: 'nav'
   },
   // {
   //   icon: <AlbumIcon />,

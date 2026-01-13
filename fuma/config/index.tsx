@@ -1,6 +1,7 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 import type { FeedOptions } from 'feed'
 import { Rss } from 'lucide-react'
+import TelegramIcon from "@/components/icons/telegram";
 
 type Config = {
   title: string,
@@ -56,6 +57,7 @@ export const config: Config = {
       },
       links: [
         { type: 'icon', url: `${baseUrl}/rss`, icon: <Rss />, label: 'RSS' },
+        { type: 'icon', url: `${baseUrl}/tg`, icon: <TelegramIcon />, label: 'Telegram' },
       ]
     } as BaseLayoutProps,
   },
