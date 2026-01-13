@@ -96,7 +96,7 @@ export const buildSource = () => {
       const feed = generateRssFeed('')
       const rssItems =await Promise.all(datasources.map(it => it.collectRssItem(config.baseUrl, 30)))
         .then(res => res.flat())
-        rssItems.sort((a,b) => dateComparator(b.date,a.date))
+      rssItems.sort((a,b) => dateComparator(b.date,a.date))
       rssItems.forEach(it => feed.addItem(it))
       return feed
     },

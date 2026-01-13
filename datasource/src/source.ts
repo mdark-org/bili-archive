@@ -92,7 +92,7 @@ export class DataSource {
     }
     const res =rssPages.map(async (p) => ({
       id: p!.data!.bvid,
-      date: p!.data!.date ?? new Date(),
+      date: parserAsDate(p!.data!.date) ?? new Date(0),
       title: p!.data!.title,
       description: p!.data!.description ?? "",
       link: `${baseUrl}${p!.url}`,
