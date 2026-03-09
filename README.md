@@ -91,6 +91,7 @@ gcloud run services describe bili-archive --region asia-east1 --format='value(st
 
 ### GitHub Variables
 
+- `GCP_PROJECT_ID`（`project-b4d41950-d335-43e9-b8b`）
 - `GCP_BUILD_TRIGGER_ID`（当前为 `f9f15429-1884-4612-b176-1a2a1f655b9d`）
 
 ### GCP Trigger 中管理非敏感环境变量

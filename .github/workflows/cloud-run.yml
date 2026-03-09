@@ -27,10 +27,11 @@ jobs:
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ steps.auth.outputs.project_id }}
+          project_id: ${{ vars.GCP_PROJECT_ID }}
 
       - name: Run Cloud Build Trigger
         run: |
           gcloud builds triggers run "${{ vars.GCP_BUILD_TRIGGER_ID }}" \
+            --project="${{ vars.GCP_PROJECT_ID }}" \
             --region=global \
             --branch=main
