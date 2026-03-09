@@ -1,0 +1,38 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Daily at 02:00 UTC (10:00 Asia/Shanghai)
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+
+      - name: Submit Cloud Build
+        run: |
+          gcloud builds submit \
+            --config cloudbuild.yaml \
+            --substitutions="_SERVICE=${{ vars.CLOUD_RUN_SERVICE }},_REGION=${{ vars.GCP_REGION }},_REPOSITORY=${{ vars.ARTIFACT_REPOSITORY }},_BASE_URL=${{ vars.BASE_URL }},_GOOGLE_CLIENT_ID=${{ vars.GOOGLE_CLIENT_ID }},_NEXT_PUBLIC_ORAMA_ENDPOINT=${{ vars.NEXT_PUBLIC_ORAMA_ENDPOINT }},_ORAMA_INDEX_ID=${{ vars.ORAMA_INDEX_ID }},_S3_REGION=${{ vars.S3_REGION }},_S3_FILE_URL=${{ vars.S3_FILE_URL }},_NEXT_PUBLIC_GAID=${{ vars.NEXT_PUBLIC_GAID }}"
