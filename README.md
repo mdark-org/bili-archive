@@ -77,8 +77,9 @@ gcloud run services describe bili-archive --region asia-east1 --format='value(st
 
 已新增 workflow：`.github/workflows/cloud-run.yml`。
 
-- `push main` 自动部署
 - 每天定时部署一次（UTC `02:00`，即北京时间 `10:00`）
+- 支持手动触发（`workflow_dispatch`）
+- GitHub 仅负责触发 GCP Cloud Build Trigger，不保存业务环境变量
 - 保留 `vercel.yml`，但目前仅支持手动触发（`workflow_dispatch`）
 
 ### GitHub Secrets
@@ -90,17 +91,29 @@ gcloud run services describe bili-archive --region asia-east1 --format='value(st
 
 ### GitHub Variables
 
-- `GCP_PROJECT_ID`（例如 `project-b4d41950-d335-43e9-b8b`）
-- `GCP_REGION`（例如 `asia-east1`）
-- `CLOUD_RUN_SERVICE`（例如 `bili-archive`）
-- `ARTIFACT_REPOSITORY`（例如 `cloud-run`）
-- `BASE_URL`
-- `GOOGLE_CLIENT_ID`
-- `NEXT_PUBLIC_ORAMA_ENDPOINT`
-- `ORAMA_INDEX_ID`
-- `S3_REGION`
-- `S3_FILE_URL`
-- `NEXT_PUBLIC_GAID`
+- `GCP_BUILD_TRIGGER_ID`（当前为 `f9f15429-1884-4612-b176-1a2a1f655b9d`）
+
+### GCP Trigger 中管理非敏感环境变量
+
+以下非敏感变量放在 Cloud Build Trigger substitutions（不是 GitHub）：
+
+- `_BASE_URL`
+- `_GOOGLE_CLIENT_ID`
+- `_NEXT_PUBLIC_ORAMA_ENDPOINT`
+- `_ORAMA_INDEX_ID`
+- `_S3_REGION`
+- `_S3_FILE_URL`
+- `_NEXT_PUBLIC_GAID`
+
+更新示例：
+
+```bash
+gcloud builds triggers update manual f9f15429-1884-4612-b176-1a2a1f655b9d \
+  --region=global \
+  --update-substitutions=_BASE_URL=https://your-domain.example,_GOOGLE_CLIENT_ID=your-google-client-id,_NEXT_PUBLIC_ORAMA_ENDPOINT=your-orama-endpoint,_ORAMA_INDEX_ID=your-orama-index-id,_S3_REGION=your-s3-region,_S3_FILE_URL=your-s3-file-url,_NEXT_PUBLIC_GAID=your-ga-id
+```
+
+敏感项继续放在 Secret Manager（`github-token`、`database-url` 等），由 `cloudbuild.yaml` 引用。
 
 ## Cloudflare Global Proxy
 
