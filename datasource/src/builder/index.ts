@@ -28,22 +28,42 @@ export const createDatasourceContents = (datasource: any) => {
     // `export const source = ${pageMaps}`)
 }
 
+export const createSidebarContents = (datasource: any) => {
+  const sourceFile = fs.openSync(`.source/generated/sidebar/${datasource.datasourceInfo.id}.json`, 'w+')
+  fs.writeSync(
+    sourceFile,
+    JSON.stringify({
+      pageTree: datasource.pageTree,
+      datasourceInfo: datasource.datasourceInfo,
+    }),
+  )
+}
+
 export const build = async (datasources: Datasource[]) => {
   // const sources = []
 
   fs.mkdirSync('.source/generated', { recursive: true })
+  fs.mkdirSync('.source/generated/sidebar', { recursive: true })
   const res = await Promise.all(datasources.map(it => new SourceBuilder(it).build()))
   const keys = res.map(it => it.datasourceInfo.id)
   for ( const source of res) {
     createDatasourceContents(source)
+    createSidebarContents(source)
   }
   const importLines = keys.map(it => `import * as ${it} from "./${it}.json" with {type: "json"};`)
     .join("\n")
   const exportLine = `export { ${keys.join(',')} }`
   const indexFile = fs.openSync(`.source/generated/index.mjs`, 'w+')
   const dtsFile = fs.openSync(`.source/generated/index.d.ts`, 'w+')
+  const sidebarImportLines = keys.map(it => `import * as ${it} from "./${it}.json" with {type: "json"};`)
+    .join("\n")
+  const sidebarIndexFile = fs.openSync(`.source/generated/sidebar/index.mjs`, 'w+')
   fs.writeSync(indexFile, `
   ${importLines}
+  ${exportLine}
+`)
+  fs.writeSync(sidebarIndexFile, `
+  ${sidebarImportLines}
   ${exportLine}
 `)
   fs.writeSync(dtsFile, `
