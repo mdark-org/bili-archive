@@ -104,4 +104,4 @@ images:
 
 options:
   dynamicSubstitutions: true
-  logging: LEGACY
+  logging: CLOUD_LOGGING_ONLY
