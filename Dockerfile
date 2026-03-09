@@ -1,13 +1,13 @@
 # 使用轻量级的 Node Alpine 镜像
-FROM node:24-alpine AS runner
+FROM node:24-alpine
 
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
-ENV PORT 3000
+ENV PORT=3000
 
-ENV HOSTNAME "0.0.0.0"
+ENV HOSTNAME="0.0.0.0"
 
 COPY fuma/.next/standalone ./
 
