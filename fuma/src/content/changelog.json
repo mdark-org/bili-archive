@@ -1,0 +1,19 @@
+[
+  {
+    "time": "2026-03-09",
+    "content": "因 Orama Cloud Free Plan 变更，暂移除搜索支持。待时间充裕考虑替代方案"
+  },
+  {
+    "time": "2026-03-09",
+    "content": "因流量超限，从 vercel 迁移至 google cloud run｜虽然是临时方案 (´_ゝ`)"
+  },
+  {
+    "time": "2026-03-09",
+    "title": "新增 Changelog 页面",
+    "content": "新增顶部导航入口“更新日志”，并提供独立页面用于记录变更。"
+  },
+  {
+    "time": "2026-01",
+    "content": "添加 tg channel link, 用于站点维护/变更通知"
+  }
+]

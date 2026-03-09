@@ -7,6 +7,7 @@ type Config = {
   title: string,
   description: string,
   enableComment: boolean
+  sponsorUrl: string
   github: {
     owner: string
     repo: string
@@ -24,6 +25,7 @@ type Config = {
 }
 
 const baseUrl = process.env.BASE_URL as string
+const sponsorUrl = process.env.SPONSOR_URL || 'https://github.com/sponsors/mdark-org'
 
 type SearchItem = {name: string, value: string}
 
@@ -41,6 +43,7 @@ export const config: Config = {
   enableComment: true,
   title: 'MDARK',
   description: 'MDARK',
+  sponsorUrl,
   github: { owner: 'mdark-org', repo: 'bili-archive', sha: 'main' },
   baseUrl: baseUrl,
   search: { tags: searchTags, defaultSearchTag },

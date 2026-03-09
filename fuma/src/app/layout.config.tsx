@@ -17,7 +17,20 @@ export const linkItems: LinkItemType[] = [
     text: '文稿',
     url: '/docs',
     active: 'url',
-  },{
+  },
+  {
+    icon: <AlbumIcon />,
+    text: '更新日志',
+    url: '/changelog',
+    active: 'nested-url',
+  },
+  // {
+  //   icon: <AlbumIcon />,
+  //   text: '赞助',
+  //   url: config.sponsorUrl,
+  //   active: 'url',
+  // },
+  {
     icon: <TelegramIcon />,
     type: 'icon',
     text: 'Telegram',
@@ -25,10 +38,4 @@ export const linkItems: LinkItemType[] = [
     active: 'url',
     on: 'nav'
   },
-  // {
-  //   icon: <AlbumIcon />,
-  //   text: 'Changelog',
-  //   url: '/changelog',
-  //   active: 'nested-url',
-  // },
 ];
