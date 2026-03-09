@@ -9,6 +9,7 @@
     "build": "pnpm build:pre && pnpm build:next && pnpm build:post",
     "dev": "next dev --turbo",
     "start": "next start",
+    "standalone": "node .next/standalone/fuma/server.js",
     "db:gen": "pnpm drizzle-kit generate",
     "db:mi": "pnpm drizzle-kit migrate"
   },
@@ -19,7 +20,7 @@
     "@content-collections/markdown": "^0.1.4",
     "@fuma-comment/react": "^1.4.0",
     "@fuma-comment/server": "^1.4.0",
-    "@fumadocs/mdx-remote": "^1.4.3",
+    "@fumadocs/mdx-remote": "^1.43",
     "@uploadthing/react": "^7.3.3",
     "better-auth": "1.4.6",
     "zod": "^3.25.42",

@@ -37,3 +37,6 @@ batch.yml
 actions/dist
 dist
 .turbo
+tmp
+.wrangler
+wrangler.jsonc

@@ -69,9 +69,14 @@ export default async function Page(props: {
   );
 }
 
+
+export const revalidate = false;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const res = await source.generateParams();
   const slugs = res.map(it => ({slug: it.slug.slice(1)}))
+    .slice(0, 30)
   return [...slugs, { slug: [] }]
 }
 
