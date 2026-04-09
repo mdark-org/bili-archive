@@ -1,4 +1,3 @@
-import * as sources from ".source/generated/index.mjs";
 import {DataSource} from "@repo/datasource/source";
 import { Root } from "@repo/datasource/shared";
 import {icons} from "lucide-react";
@@ -7,6 +6,8 @@ import {Feed, FeedOptions} from "feed";
 import {config} from "../../../config";
 import {datasourceSchema} from "@/lib/source/schema.ts";
 import * as parser from 'any-date-parser'
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import * as path from "node:path";
 const icon = (icon: any) => {
   if (!icon) return
   if (icon in icons) return createElement(icons[icon as keyof typeof icons])
@@ -32,10 +33,23 @@ export function generateRssFeed(category: string, feedOption?: Partial<FeedOptio
 
 export const buildSource = () => {
   const base = { name: 'root', children: [] as Root[] }
-  const datasources =
-    // @ts-ignore
-    Object.keys(sources).map(key => datasourceSchema.parse(sources[key]))
-  .map(it => new DataSource(it.pageTree, it.pageMap, it.datasourceInfo))
+
+  const generatedDir = path.join(process.cwd(), ".source/generated");
+  const sourceEntries = (() => {
+    if (!existsSync(generatedDir)) {
+      return [];
+    }
+    return readdirSync(generatedDir)
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => {
+        const filePath = path.join(generatedDir, file);
+        const content = readFileSync(filePath, "utf8");
+        return JSON.parse(content);
+      });
+  })();
+  const datasources = sourceEntries
+    .map((entry) => datasourceSchema.parse(entry))
+    .map(it => new DataSource(it.pageTree, it.pageMap, it.datasourceInfo))
   datasources.forEach(it => {
     it.pageTree.icon = icon(it.pageTree.icon)
     base.children.push(it.pageTree)

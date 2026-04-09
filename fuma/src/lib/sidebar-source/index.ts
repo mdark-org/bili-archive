@@ -1,8 +1,9 @@
-import * as sources from ".source/generated/sidebar/index.mjs";
 import { Root } from "@repo/datasource/shared";
 import { icons } from "lucide-react";
 import { createElement } from "react";
 import { sidebarDatasourceSchema } from "@/lib/sidebar-source/schema";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import * as path from "node:path";
 
 const icon = (icon: any) => {
   if (!icon) return;
@@ -18,11 +19,23 @@ type SidebarDatasource = {
   };
 };
 
-const sourceMap = sources as Record<string, unknown>;
+const sidebarGeneratedDir = path.join(process.cwd(), ".source/generated/sidebar");
+const sourceEntries = (() => {
+  if (!existsSync(sidebarGeneratedDir)) {
+    return [];
+  }
+  return readdirSync(sidebarGeneratedDir)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const filePath = path.join(sidebarGeneratedDir, file);
+      const content = readFileSync(filePath, "utf8");
+      return JSON.parse(content);
+    });
+})();
 
 const datasources =
-  Object.keys(sourceMap)
-    .map((key) => sidebarDatasourceSchema.parse(sourceMap[key]))
+  sourceEntries
+    .map((entry) => sidebarDatasourceSchema.parse(entry))
     .map((it) => ({
       ...it,
       pageTree: {

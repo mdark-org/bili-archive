@@ -6,6 +6,7 @@
     "build:pre": "node scripts/pre-build.ts",
     "build:post": "node scripts/post-build.ts",
     "build:next": "next build",
+    "analyze:docs-build": "node scripts/analyze-next-docs-build.mjs",
     "build": "pnpm build:pre && pnpm build:next && pnpm build:post",
     "dev": "next dev --turbo",
     "start": "next start",
