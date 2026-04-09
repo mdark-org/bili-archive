@@ -1,8 +1,59 @@
 
-import serialize from "serialize-javascript";
 import * as fs from "node:fs";
 import {Datasource} from "../shared";
 import {SourceBuilder} from "./builder";
+
+type SidebarPageNode = {
+  type: "page";
+  url: string;
+  name: string;
+  title: string;
+  external?: boolean;
+};
+
+type SidebarFolderNode = {
+  type: "folder";
+  url: string;
+  name: string;
+  title: string;
+  root?: boolean;
+  description?: string;
+  icon?: unknown;
+  defaultOpen?: boolean;
+  index?: SidebarPageNode;
+  children: SidebarNode[];
+};
+
+type SidebarNode = SidebarPageNode | SidebarFolderNode;
+
+const compactSidebarNode = (node: any): SidebarNode => {
+  if (!node || typeof node !== "object") return node;
+
+  if (node.type === "page") {
+    return {
+      type: "page",
+      url: node.url,
+      name: node.name,
+      title: node.title,
+      external: node.external,
+    };
+  }
+
+  return {
+    type: node.type,
+    url: node.url,
+    name: node.name,
+    title: node.title,
+    root: node.root,
+    description: node.description,
+    icon: node.icon,
+    defaultOpen: node.defaultOpen,
+    index: node.index ? compactSidebarNode(node.index) as SidebarPageNode : undefined,
+    children: Array.isArray(node.children)
+      ? node.children.map((child: any) => compactSidebarNode(child))
+      : [],
+  };
+};
 
 export const createDatasourceContents = (datasource: any) => {
   const sourceFile = fs.openSync(`.source/generated/${datasource.datasourceInfo.id}.json`, 'w+')
@@ -33,7 +84,7 @@ export const createSidebarContents = (datasource: any) => {
   fs.writeSync(
     sourceFile,
     JSON.stringify({
-      pageTree: datasource.pageTree,
+      pageTree: compactSidebarNode(datasource.pageTree),
       datasourceInfo: datasource.datasourceInfo,
     }),
   )
@@ -55,7 +106,7 @@ export const build = async (datasources: Datasource[]) => {
   const exportLine = `export { ${keys.join(',')} }`
   const indexFile = fs.openSync(`.source/generated/index.mjs`, 'w+')
   const dtsFile = fs.openSync(`.source/generated/index.d.ts`, 'w+')
-  const sidebarImportLines = keys.map(it => `import * as ${it} from "./${it}.json" with {type: "json"};`)
+  const sidebarImportLines = keys.map(it => `import * as ${it} from "./sidebar/${it}.json" with {type: "json"};`)
     .join("\n")
   const sidebarIndexFile = fs.openSync(`.source/generated/sidebar/index.mjs`, 'w+')
   fs.writeSync(indexFile, `
